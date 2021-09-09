@@ -1,6 +1,6 @@
 ﻿namespace LabNet2021.Tp1
 {
-    public abstract class TransportePublico : ITransportePublico
+    public abstract class TransportePublico
     {
         private int pasajeros;
 
@@ -14,17 +14,13 @@
             this.pasajeros = numeroPasajeros;
         }
 
-
-        public virtual string Avanzar()
+        public string Arrancar()
         {
-            return "Estoy avanzando...";
+            return $"Este transporte arranca simplemente girando la llave";
         }
+        public abstract string Avanzar();
 
-        public virtual string Detenerse()
-        {
-            return "Deteniendome...";
-        }
-
+        public abstract string Detenerse();
 
     }
 }

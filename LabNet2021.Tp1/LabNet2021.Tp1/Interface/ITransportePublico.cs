@@ -2,8 +2,6 @@
 {
     public interface ITransportePublico
     {
-        string Avanzar();
-        string Detenerse();
-
+    string PagoDeCliente();
     }
 }

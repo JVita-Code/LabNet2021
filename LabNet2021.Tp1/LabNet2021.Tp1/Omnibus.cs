@@ -1,6 +1,6 @@
 ﻿namespace LabNet2021.Tp1
 {
-    public class Omnibus : TransportePublico
+    public class Omnibus : TransportePublico, ITransportePublico    
     {
         public Omnibus(int numeroPasajeros) : base(numeroPasajeros)
         {
@@ -12,8 +12,12 @@
         }
         public override string Detenerse()
         {
-            return "Deteniendome...";
+            return "Tocaron el timbre, deteniendome...";
         }
 
+        public string PagoDeCliente()
+        {
+            return "El pago del cliente es a través de la Tarjeta SUBE";
+        }
     }
 }
