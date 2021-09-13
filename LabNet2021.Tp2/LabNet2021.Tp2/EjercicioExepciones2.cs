@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LabNet2021.Tp2
 {
@@ -19,29 +15,22 @@ namespace LabNet2021.Tp2
         }
 
         public int Numerador { get; set; }
-        public int Resultado { get; set; }
-
-
         public int Denominador
         {
             get { return denominador; }
-        }
-
+        }      
         
-        
-
-        public static void DivisionComun(int numerador)
-        {           
+        public static int Division(int numerador)
+        {
             int resultado = numerador / 0;
+            return resultado;         
         }
 
-        public static int DivisionCompleta(int numerador, int denominador)
+        public static int Division(int numerador, int denominador)
         {
             int resultado = numerador / denominador;
             return resultado;
         }
-
-        
     }
 
 
