@@ -4,29 +4,60 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace LabNet2021.Tp4.EF.Logic
 {
-    class ShipperLogic : BaseLogic, IABMLogic<Shipper>
+    public class ShipperLogic : BaseLogic, IABMLogic<Shipper>
     {
         public void Add(Shipper field)
         {
-            throw new NotImplementedException();
+            context.Shippers.Add(field);
+            context.SaveChanges();
+        }
+
+        public static void SetShipperDetails(string companyName, string companyPhone)
+        {
+            ShipperLogic shipperLogic = new ShipperLogic();
+
+            shipperLogic.Add(new Shipper
+            {
+                CompanyName = companyName,
+                Phone = companyPhone
+            });
         }
 
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            var deleteId = context.Shippers.Find(id);
+            context.Shippers.Remove(deleteId);
+            context.SaveChanges();
         }
 
         public List<Shipper> GetAll()
         {
-            throw new NotImplementedException();
+            return context.Shippers.ToList();
         }
 
         public void Update(Shipper field)
         {
-            throw new NotImplementedException();
+            var shipperUpdate = context.Shippers.Find(field.ShipperID);
+
+            if(shipperUpdate == null)
+            {
+                throw new NullReferenceException();
+            }
+            else
+            {
+                shipperUpdate.CompanyName = field.CompanyName;
+
+                shipperUpdate.Phone = field.Phone;
+                context.SaveChanges();
+            }
+            
         }
+
+        
+
     }
 }

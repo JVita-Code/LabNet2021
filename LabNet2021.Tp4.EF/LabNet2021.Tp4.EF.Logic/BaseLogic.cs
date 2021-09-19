@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace LabNet2021.Tp4.EF.Logic
 {
-    class BaseLogic
+    public class BaseLogic
     {
         protected readonly NorthwindContext context;
 

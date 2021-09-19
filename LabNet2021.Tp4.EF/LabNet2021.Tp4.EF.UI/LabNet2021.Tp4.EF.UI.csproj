@@ -102,5 +102,19 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LabNet2021.Tp4.EF.Data\LabNet2021.Tp4.EF.Data.csproj">
+      <Project>{13e9eed6-61aa-4259-b47b-b14bddaeb55a}</Project>
+      <Name>LabNet2021.Tp4.EF.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LabNet2021.Tp4.EF.Entities\LabNet2021.Tp4.EF.Entities.csproj">
+      <Project>{8b77f097-5200-497d-bf84-1c18ab3e733d}</Project>
+      <Name>LabNet2021.Tp4.EF.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LabNet2021.Tp4.EF.Logic\LabNet2021.Tp4.EF.Logic.csproj">
+      <Project>{ae55932e-ae3e-4424-a7fd-73b014c8290b}</Project>
+      <Name>LabNet2021.Tp4.EF.Logic</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

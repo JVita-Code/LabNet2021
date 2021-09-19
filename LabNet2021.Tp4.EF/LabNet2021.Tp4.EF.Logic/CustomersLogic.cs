@@ -7,26 +7,12 @@ using System.Threading.Tasks;
 
 namespace LabNet2021.Tp4.EF.Logic
 {
-    class CustomersLogic : BaseLogic, IABMLogic<Customer>
+    public class CustomersLogic : BaseLogic
     {
-        public void Add(Customer field)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Delete(int id)
-        {
-            throw new NotImplementedException();
-        }
-
         public List<Customer> GetAll()
         {
             return context.Customers.ToList();
         }
-
-        public void Update(Customer field)
-        {
-            throw new NotImplementedException();
-        }
+                
     }
 }

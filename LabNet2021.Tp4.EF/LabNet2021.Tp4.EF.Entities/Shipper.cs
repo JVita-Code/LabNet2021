@@ -13,13 +13,14 @@ namespace LabNet2021.Tp4.EF.Entities
         {
             Orders = new HashSet<Order>();
         }
-
+        
         public int ShipperID { get; set; }
 
         [Required]
         [StringLength(40)]
         public string CompanyName { get; set; }
 
+        [Required]
         [StringLength(24)]
         public string Phone { get; set; }
 
