@@ -18,7 +18,7 @@
         <Button Content="Load Customers" HorizontalAlignment="Left" Margin="510,64,0,0" VerticalAlignment="Top" Width="188" Click="btnGetAllCustomers" Height="36"/>
         <Label Content="Customers" HorizontalAlignment="Left" Margin="556,19,0,0" VerticalAlignment="Top" FontSize="18"/>
         <Button Content="Delete Shipper" HorizontalAlignment="Left" Margin="141,599,0,0" VerticalAlignment="Top" Width="167" Click="btnDeleteShipper" Height="23"/>
-        <Button Content="Update Shippers Details" HorizontalAlignment="Left" Margin="141,741,0,0" VerticalAlignment="Top" Width="167" Click="btnUpdateShipper"/>
+        <Button Content="Update Shippers Details" HorizontalAlignment="Left" Margin="141,728,0,0" VerticalAlignment="Top" Width="167" Click="btnUpdateShipper"/>
         <Button Content="Insert Shipper" HorizontalAlignment="Left" Margin="141,514,0,0" VerticalAlignment="Top" Width="167" Click="btnSetShipper"/>
         <TextBox Name="txtShipperName" HorizontalAlignment="Left" Height="23" Margin="171,455,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="137" />
         <Label Content="Company Name" HorizontalAlignment="Left" Margin="66,452,0,0" VerticalAlignment="Top" Width="96"/>
@@ -27,12 +27,12 @@
         <Button Content="Exit" HorizontalAlignment="Left" Margin="525,521,0,0" VerticalAlignment="Top" Width="173" Height="95" Click="btnExit"/>
         <TextBox Name="txtShipperID" HorizontalAlignment="Left" Height="23" Margin="166,566,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="142"/>
         <Label Content="Shipper ID" HorizontalAlignment="Left" Margin="93,564,0,0" VerticalAlignment="Top" Width="68"/>
-        <TextBox Name="A" HorizontalAlignment="Left" Height="23" Margin="166,713,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="142" />
-        <TextBox Name="B" HorizontalAlignment="Left" Height="23" Margin="166,685,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="142"/>
+        <TextBox Name="A" HorizontalAlignment="Left" Height="23" Margin="166,697,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="142" />
+        <TextBox Name="B" HorizontalAlignment="Left" Height="23" Margin="166,669,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="142"/>
         
-        <Label Content="Shipper Name" HorizontalAlignment="Left" Margin="80,685,0,0" VerticalAlignment="Top"/>
-        <Label Content="Company Phone" HorizontalAlignment="Left" Margin="66,710,0,0" VerticalAlignment="Top"/>
-        <Label Content="Shipper List" HorizontalAlignment="Left" Margin="88,657,0,0" VerticalAlignment="Top" Width="73"/>
-        <ComboBox Name="cmdShippers" HorizontalAlignment="Left" Margin="166,657,0,0" VerticalAlignment="Top" Width="142" DropDownOpened="ComboBox_DropDownOpened" />
+        <Label Content="Shipper Name" HorizontalAlignment="Left" Margin="67,666,0,0" VerticalAlignment="Top"/>
+        <Label Content="Company Phone" HorizontalAlignment="Left" Margin="56,697,0,0" VerticalAlignment="Top"/>
+        <Label Content="Shipper List" HorizontalAlignment="Left" Margin="80,642,0,0" VerticalAlignment="Top" Width="73"/>
+        <ComboBox Name="cmdShippers" HorizontalAlignment="Left" Margin="166,642,0,0" VerticalAlignment="Top" Width="142" DropDownOpened="ComboBox_DropDownOpened" />
     </Grid>
 </Window>

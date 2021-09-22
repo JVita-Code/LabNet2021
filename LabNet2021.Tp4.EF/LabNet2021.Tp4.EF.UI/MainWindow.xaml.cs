@@ -110,7 +110,7 @@ namespace LabNet2021.Tp4.EF.UI
             }
             catch (NullReferenceException ex)
             {
-                MessageBox.Show("Error.");
+                MessageBox.Show("Please select a Shipper from the list");
 
             }
             catch (FormatException ex)
