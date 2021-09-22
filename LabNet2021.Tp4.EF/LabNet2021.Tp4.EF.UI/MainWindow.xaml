@@ -12,19 +12,19 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Label Content="Shippers" HorizontalAlignment="Left" Margin="166,19,0,0" VerticalAlignment="Top" FontSize="22"/>
-        <Button Content="Load Shippers" HorizontalAlignment="Left" Margin="129,64,0,0" VerticalAlignment="Top" Width="161" Click="Button_Click" Height="36"/>
+        <Button Content="Load Shippers" HorizontalAlignment="Left" Margin="129,64,0,0" VerticalAlignment="Top" Width="161" Click="btnGetAllShippers" Height="36"/>
         <DataGrid Name="ShippersList" HorizontalAlignment="Left" Height="281" Margin="53,140,0,0" VerticalAlignment="Top" Width="354" SelectionChanged="DataGrid_SelectionChanged"/>
         <DataGrid Name="CustomersList" HorizontalAlignment="Left" Height="281" Margin="443,140,0,0" VerticalAlignment="Top" Width="331"/>
-        <Button Content="Load Customers" HorizontalAlignment="Left" Margin="510,64,0,0" VerticalAlignment="Top" Width="188" Click="Button_Click_1" Height="36"/>
+        <Button Content="Load Customers" HorizontalAlignment="Left" Margin="510,64,0,0" VerticalAlignment="Top" Width="188" Click="btnGetAllCustomers" Height="36"/>
         <Label Content="Customers" HorizontalAlignment="Left" Margin="556,19,0,0" VerticalAlignment="Top" FontSize="18"/>
-        <Button Content="Delete Shipper" HorizontalAlignment="Left" Margin="141,599,0,0" VerticalAlignment="Top" Width="167" Click="Button_Click_2" Height="23"/>
-        <Button Content="Update Shippers Details" HorizontalAlignment="Left" Margin="141,741,0,0" VerticalAlignment="Top" Width="167" Click="Button_Click_5"/>
-        <Button Content="Insert Shipper" HorizontalAlignment="Left" Margin="141,514,0,0" VerticalAlignment="Top" Width="167" Click="Button_Click_3"/>
+        <Button Content="Delete Shipper" HorizontalAlignment="Left" Margin="141,599,0,0" VerticalAlignment="Top" Width="167" Click="btnDeleteShipper" Height="23"/>
+        <Button Content="Update Shippers Details" HorizontalAlignment="Left" Margin="141,741,0,0" VerticalAlignment="Top" Width="167" Click="btnUpdateShipper"/>
+        <Button Content="Insert Shipper" HorizontalAlignment="Left" Margin="141,514,0,0" VerticalAlignment="Top" Width="167" Click="btnSetShipper"/>
         <TextBox Name="txtShipperName" HorizontalAlignment="Left" Height="23" Margin="171,455,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="137" />
         <Label Content="Company Name" HorizontalAlignment="Left" Margin="66,452,0,0" VerticalAlignment="Top" Width="96"/>
         <Label Content="Company Phone" HorizontalAlignment="Left" Margin="65,478,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.091,0.359" Width="97"/>
         <TextBox Name="txtPhone" HorizontalAlignment="Left" Height="23" Margin="171,483,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="137"/>
-        <Button Content="Exit" HorizontalAlignment="Left" Margin="525,521,0,0" VerticalAlignment="Top" Width="173" Height="95" Click="Button_Click_4"/>
+        <Button Content="Exit" HorizontalAlignment="Left" Margin="525,521,0,0" VerticalAlignment="Top" Width="173" Height="95" Click="btnExit"/>
         <TextBox Name="txtShipperID" HorizontalAlignment="Left" Height="23" Margin="166,566,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="142"/>
         <Label Content="Shipper ID" HorizontalAlignment="Left" Margin="93,564,0,0" VerticalAlignment="Top" Width="68"/>
         <TextBox Name="A" HorizontalAlignment="Left" Height="23" Margin="166,713,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="142" />
@@ -33,6 +33,6 @@
         <Label Content="Shipper Name" HorizontalAlignment="Left" Margin="80,685,0,0" VerticalAlignment="Top"/>
         <Label Content="Company Phone" HorizontalAlignment="Left" Margin="66,710,0,0" VerticalAlignment="Top"/>
         <Label Content="Shipper List" HorizontalAlignment="Left" Margin="88,657,0,0" VerticalAlignment="Top" Width="73"/>
-        <ComboBox Name="ComboBox" HorizontalAlignment="Left" Margin="166,657,0,0" VerticalAlignment="Top" Width="142" DropDownOpened="ComboBox_DropDownOpened" />
+        <ComboBox Name="cmdShippers" HorizontalAlignment="Left" Margin="166,657,0,0" VerticalAlignment="Top" Width="142" DropDownOpened="ComboBox_DropDownOpened" />
     </Grid>
 </Window>

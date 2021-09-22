@@ -43,7 +43,7 @@ namespace LabNet2021.Tp4.EF.Logic
         {
             var shipperUpdate = context.Shippers.Find(field.ShipperID);
 
-            if(shipperUpdate == null)
+            if (shipperUpdate == null)
             {
                 throw new NullReferenceException();
             }
@@ -54,7 +54,7 @@ namespace LabNet2021.Tp4.EF.Logic
                 shipperUpdate.Phone = field.Phone;
                 context.SaveChanges();
             }
-            
+
         }
 
         

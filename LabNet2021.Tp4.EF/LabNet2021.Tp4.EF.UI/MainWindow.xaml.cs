@@ -18,20 +18,20 @@ namespace LabNet2021.Tp4.EF.UI
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void btnGetAllShippers(object sender, RoutedEventArgs e)
         {
             ShipperLogic shippersLogic = new ShipperLogic();
 
             ShippersList.ItemsSource = shippersLogic.GetAll();
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void btnGetAllCustomers(object sender, RoutedEventArgs e)
         {
             CustomersLogic customerslogic = new CustomersLogic();
             CustomersList.ItemsSource = customerslogic.GetAll();
         }
 
-        private void Button_Click_3(object sender, RoutedEventArgs e)
+        private void btnSetShipper(object sender, RoutedEventArgs e)
         {
             ShipperLogic shippersLogic = new ShipperLogic();
 
@@ -58,7 +58,7 @@ namespace LabNet2021.Tp4.EF.UI
             
         }
 
-        private void Button_Click_2(object sender, RoutedEventArgs e)
+        private void btnDeleteShipper(object sender, RoutedEventArgs e)
         {
             ShipperLogic shipperslogic = new ShipperLogic();
             try
@@ -90,16 +90,18 @@ namespace LabNet2021.Tp4.EF.UI
 
         }
 
-        private void Button_Click_5(object sender, RoutedEventArgs e)
+        private void btnUpdateShipper(object sender, RoutedEventArgs e)
         {
+
+            ShipperLogic shippersLogic = new ShipperLogic();
             try
             {
-                ShipperLogic shippersLogic = new ShipperLogic();
+                
                 shippersLogic.Update(new Shipper
                 {
                     CompanyName = B.Text,
                     Phone = A.Text,                    
-                    ShipperID = int.Parse(ComboBox.SelectedValue.ToString())
+                    ShipperID = int.Parse(cmdShippers.SelectedValue.ToString())
                 });
 
                 MessageBox.Show("Shipper info updated.");
@@ -127,7 +129,7 @@ namespace LabNet2021.Tp4.EF.UI
             }
         }
 
-        private void Button_Click_4(object sender, RoutedEventArgs e)
+        private void btnExit(object sender, RoutedEventArgs e)
         {
             this.Close();
         }
@@ -136,15 +138,15 @@ namespace LabNet2021.Tp4.EF.UI
         {
             ShipperLogic shippersLogic = new ShipperLogic();
             List<Shipper> shipper = shippersLogic.GetAll();
-            ComboBox.ItemsSource = shipper;
-            ComboBox.SelectedValuePath = "ShipperID";
-            ComboBox.DisplayMemberPath = "CompanyName";
+            cmdShippers.ItemsSource = shipper;
+            cmdShippers.SelectedValuePath = "ShipperID";
+            cmdShippers.DisplayMemberPath = "CompanyName";
         }
 
         private void ComboBox_DropDownOpened(object sender, EventArgs e)
         {
             ShipperLogic shippersLogic = new ShipperLogic();
-            ComboBox.ItemsSource = shippersLogic.GetAll();
+            cmdShippers.ItemsSource = shippersLogic.GetAll();
         }
 
         private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
