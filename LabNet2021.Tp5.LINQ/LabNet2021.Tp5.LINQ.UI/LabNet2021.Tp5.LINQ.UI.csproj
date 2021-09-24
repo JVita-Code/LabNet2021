@@ -57,5 +57,15 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LabNet2021.Tp5.LINQ.Data\LabNet2021.Tp5.LINQ.Data.csproj">
+      <Project>{689BBB95-7333-4324-A5F4-56A729C64194}</Project>
+      <Name>LabNet2021.Tp5.LINQ.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LabNet2021.Tp5.LINQ.Entities\LabNet2021.Tp5.LINQ.Entities.csproj">
+      <Project>{090b15b6-4247-4e60-9f39-ab358a1718ca}</Project>
+      <Name>LabNet2021.Tp5.LINQ.Entities</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
