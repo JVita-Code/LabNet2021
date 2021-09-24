@@ -48,11 +48,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaseLogic.cs" />
+    <Compile Include="IABMLogic.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LabNet2021.Tp5.LINQ.Data\LabNet2021.Tp5.LINQ.Data.csproj">
+      <Project>{689BBB95-7333-4324-A5F4-56A729C64194}</Project>
+      <Name>LabNet2021.Tp5.LINQ.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LabNet2021.Tp5.LINQ.Entities\LabNet2021.Tp5.LINQ.Entities.csproj">
+      <Project>{090B15B6-4247-4E60-9F39-AB358A1718CA}</Project>
+      <Name>LabNet2021.Tp5.LINQ.Entities</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
