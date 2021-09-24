@@ -8,7 +8,7 @@ namespace LabNet2021.Tp5.LINQ.Entities
     using System.Data.Entity.Spatial;
 
 
-    public partial class Product
+    public partial class Product : IEnumerable
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Product()
@@ -46,5 +46,10 @@ namespace LabNet2021.Tp5.LINQ.Entities
         public virtual ICollection<Order_Detail> Order_Details { get; set; }
 
         public virtual Supplier Supplier { get; set; }
+
+        public IEnumerator GetEnumerator()
+        {
+            return ((IEnumerable)ProductName).GetEnumerator();
+        }
     }
 }

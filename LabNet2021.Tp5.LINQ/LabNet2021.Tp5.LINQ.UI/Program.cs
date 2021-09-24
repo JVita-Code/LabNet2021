@@ -17,20 +17,20 @@ namespace LabNet2021.Tp5.LINQ.UI
 
             var query2 = context.Products.Where(p => p.UnitsInStock == 0);
 
-            foreach (var product in query2)
-            {
-                Console.WriteLine(product.ProductName);
-            }
+            //foreach (var product in query2)
+            //{
+            //    Console.WriteLine(product.ProductName);
+            //}
 
 
             var query3 = (from product in context.Products
                           where product.UnitsInStock > 0 & product.UnitPrice > 3
                           select product.ProductName).ToList();
 
-            foreach (var product in query3)
-            {
-                Console.WriteLine(product);
-            }
+            //foreach (var product in query3)
+            //{
+            //    Console.WriteLine(product);
+            //}
 
             var query4 = (from customer in context.Customers
                           where customer.Region == "WA"
