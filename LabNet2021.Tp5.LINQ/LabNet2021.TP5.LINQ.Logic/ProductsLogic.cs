@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System;
 
+
 namespace LabNet2021.TP5.LINQ.Logic
 {
     public class ProductsLogic : BaseLogic
@@ -11,21 +12,21 @@ namespace LabNet2021.TP5.LINQ.Logic
         public List<Product> ObtenerProductosSinStock()
         {
 
-            var query2 = context.Products.Where(p => p.UnitsInStock == 0).ToList();
+            var productos = context.Products.Where(p => p.UnitsInStock == 0).ToList();
 
-            foreach (var product in query2)
-            {
-                Console.WriteLine(product.ProductName);
-            }
+            //foreach (var product in query2)
+            //{
+            //    Console.WriteLine(product.ProductName);
+            //}
 
-            return query2;
+            return productos;
 
 
         }
 
         public List<Product> ObtenerProductosConStockBaratos()
         {
-             var query3 = (from product in context.Products
+             var productosBaratos = (from product in context.Products
                               where product.UnitsInStock > 0 && product.UnitPrice > 3
                               select product).ToList();
             //foreach (var product in query3)
@@ -33,66 +34,67 @@ namespace LabNet2021.TP5.LINQ.Logic
             //    Console.WriteLine(product.ProductName);
             //}
 
-            return query3;
+            return productosBaratos;
         }
 
         public Product ObtenerUnProductoONingunoConId789()
         {
-            var query5 = context.Products.FirstOrDefault(p => p.ProductID == 789);
+            var elemento = context.Products.Where(p => p.ProductID == 789).FirstOrDefault();
 
-            //if(query5 == null)
-            // {
-            //     throw new Exception();
-            // }
-            // else
-            // {
-            //     Console.WriteLine(query5);
-            //     return query5;
-
-            // }
-            return query5;
+            
+            return elemento;
         }
 
         public List<Product> ObtenerProductosOrdenadosNombre()
         {
-            var query9 = context.Products.OrderBy(p => p.ProductName).ToList();
+            var listaProductos = context.Products.OrderBy(p => p.ProductName).ToList();
             //foreach (var product in query9)
             //{
             //    Console.WriteLine(product.ProductName);
             //}
 
-            return query9;
+            return listaProductos;
         }
         public List<Product> ObtenerProductosOrdenadosPorPrecioUnidadMayor()
         {
-            var query10 = (from product in context.Products
+            var listaProductos = (from product in context.Products
                            orderby product.UnitsInStock descending 
                            select product).ToList();
 
-            //foreach (var product in query10)
-            //{
-            //    Console.WriteLine(product);
-            //}
-            //
-            return query10;
+            
+            return listaProductos;
         }
-        //public List<Product> ObtenerCategoriasAsociadasProductos()
-        //{
-        //    var query11 = (from product in context.Products
-        //                   join categ in context.Categories
-        //                   on product.CategoryID
-        //                   equals categ.CategoryID
-        //                   group categ by categ.CategoryName into algo
-        //                   select algo).ToList();
 
-        //    return query11.ToList();
-        //}
-
-        public Product ObtenerPrimerElementoListaProductos()
+        public IEnumerable<Product> ProductsPorStock()
         {
-            var query12 = context.Products.First(); 
+            var listaProductos = from Products in context.Products
+                                    orderby Products.UnitsInStock descending
+                                    select Products;
 
-            return query12;
+            return listaProductos;
+        }
+
+
+        public IEnumerable<ProductsCategories> JoinDeProductsCategories()
+        {
+            var productsCategories = from Categories in context.Categories
+                                     join Products in context.Products
+                                     on Categories.CategoryID equals Products.CategoryID
+                                     select new ProductsCategories
+                                     {
+                                         ProductID = Products.ProductID,
+                                         ProductName = Products.ProductName,
+                                         CategoryID = Categories.CategoryID,
+                                         CategoryName = Categories.CategoryName
+                                     };
+            return productsCategories;
+        }
+
+        public Product ObtenerPrimerElementoDeLista(List<Product> listaProductos)
+        {
+            var elementoDeLista = listaProductos.First(); 
+
+            return elementoDeLista;
         }
     }
 
