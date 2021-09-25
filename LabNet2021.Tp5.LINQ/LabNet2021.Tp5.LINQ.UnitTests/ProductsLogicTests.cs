@@ -19,12 +19,11 @@ namespace LabNet2021.Tp5.LINQ.UnitTests
 
             ProductsLogic listaProductos = new ProductsLogic();
 
-
             // Act
 
             var resultado = listaProductos.ObtenerProductosSinStock();
 
-            Assert.Equals(1, 1);
+            Assert.Equals(1, 1);         
 
             
 
