@@ -4,6 +4,7 @@ using System;
 using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
+using LabNet2021.TP5.LINQ.Logic;
 
 namespace LabNet2021.Tp5.LINQ.UI
 {
@@ -99,7 +100,38 @@ namespace LabNet2021.Tp5.LINQ.UI
             //{
             //    Console.WriteLine(categoria);
             //}
+
+
+            // -------------- instancias
+
+            ProductsLogic hola = new ProductsLogic();
+
+            //hola.ObtenerProductosSinStock();
+
+            //hola.ObtenerUnProductoONingunoConId789();
+
+            //hola.ObtenerProductosOrdenadosNombre();
+
+            //hola.ObtenerProductosOrdenadosPorPrecioUnidadMayor();
+
+            hola.ObtenerPrimerElementoListaProductos();
+
+
+
+            //hola1.ObtenerProductosOrdenadosPorPrecioUnidadMayor();
+
+            CustomersLogic hola1 = new CustomersLogic();
+
+
+            //hola1.ObtenerCustomersWA();
+
+            //hola1.ObtenerPrimerosTresCustomersDeWA();
+
             
+
+
+
+
 
             Console.ReadLine();
 

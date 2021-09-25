@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace LabNet2021.TP5.LINQ.Logic
 {
-    class BaseLogic
+    public class BaseLogic
     {
         protected readonly NorthwindContext context;
 

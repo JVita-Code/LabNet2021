@@ -66,6 +66,10 @@
       <Project>{090b15b6-4247-4e60-9f39-ab358a1718ca}</Project>
       <Name>LabNet2021.Tp5.LINQ.Entities</Name>
     </ProjectReference>
+    <ProjectReference Include="..\LabNet2021.TP5.LINQ.Logic\LabNet2021.TP5.LINQ.Logic.csproj">
+      <Project>{15b45dfd-6cfc-4d7b-91b2-6c696212b4ac}</Project>
+      <Name>LabNet2021.TP5.LINQ.Logic</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
