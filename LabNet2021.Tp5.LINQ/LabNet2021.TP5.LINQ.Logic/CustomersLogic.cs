@@ -10,8 +10,10 @@ namespace LabNet2021.TP5.LINQ.Logic
         public Customer ObtenerCustomer(string id)
         {
             var objetoCustomer = context.Customers.Where(ID => ID.CustomerID == id).SingleOrDefault();
-
-            return objetoCustomer;
+            if (objetoCustomer != null)
+                return objetoCustomer;
+            else
+                throw new Exception();           
 
         }
         public List<Customer> ObtenerCustomersWA()
@@ -29,6 +31,13 @@ namespace LabNet2021.TP5.LINQ.Logic
             return todosCustomers;
 
         }
+
+        public List<Customer> ObtenerCustomersConEscrituraDiferente()
+        {
+            var customers = context.Customers.ToList();
+            return customers;
+        }
+
 
         //public IEnumerable<CustomersOrders>
 

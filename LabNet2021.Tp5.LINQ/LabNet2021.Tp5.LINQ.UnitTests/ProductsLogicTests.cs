@@ -1,6 +1,9 @@
 ﻿using LabNet2021.Tp5.LINQ.Data;
+using LabNet2021.Tp5.LINQ.Entities;
 using LabNet2021.TP5.LINQ.Logic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
+using System.Collections.Generic;
 
 namespace LabNet2021.Tp5.LINQ.UnitTests
 {
@@ -11,25 +14,28 @@ namespace LabNet2021.Tp5.LINQ.UnitTests
         [TestMethod]
         public void ObtenerProductosSinStock_ListaProductos_DevuelveListaProductosSinStock()
         {
-            // Arrange
-
 
             var context = new NorthwindContext();
 
             ProductsLogic listaProductos = new ProductsLogic();
-            listaProductos.ObtenerProductosSinStock();
-
 
 
             // Act
 
+            var resultado = listaProductos.ObtenerProductosSinStock();
+
+            Assert.Equals(1, 1);
+
+            
 
 
-            // Assert
+        }        
 
-            Assert.AreEqual(1, 1);
+        
 
-
-        }
     }
 }
+
+        
+    
+
