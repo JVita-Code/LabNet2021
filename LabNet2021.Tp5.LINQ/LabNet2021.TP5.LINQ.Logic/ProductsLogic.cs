@@ -1,8 +1,6 @@
 ﻿using LabNet2021.Tp5.LINQ.Entities;
 using System.Collections.Generic;
 using System.Linq;
-using System;
-
 
 namespace LabNet2021.TP5.LINQ.Logic
 {

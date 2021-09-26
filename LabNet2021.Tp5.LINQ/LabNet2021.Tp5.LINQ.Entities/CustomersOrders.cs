@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using LabNet2021.Tp5.LINQ;
-
-namespace LabNet2021.TP5.LINQ.Logic
+﻿namespace LabNet2021.Tp5.LINQ.Entities
 {
     public class CustomersOrders
     {
