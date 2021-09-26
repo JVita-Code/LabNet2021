@@ -21,12 +21,7 @@ namespace LabNet2021.TP5.LINQ.Logic
             var todosCustomers = (from customer in context.Customers
                           where customer.Region == "WA"
                           select customer).ToList();
-
-
-            //foreach (var customer in query4)
-            //{
-            //    System.Console.WriteLine(customer);
-            //}
+            
 
             return todosCustomers;
 
@@ -37,24 +32,7 @@ namespace LabNet2021.TP5.LINQ.Logic
             var customers = context.Customers.ToList();
             return customers;
         }
-
-
-        //public IEnumerable<CustomersOrders>
-
-        //public List<Customer> ObtenerCustomerMayus()
-        //{
-        //    var query6 = (from customer
-        //                  in context.Customers
-        //                  select new { companyname = customer.CompanyName.ToLower(), COMPANYNAME = customer.CompanyName.ToUpper() }).ToList();
-
-        //    //foreach (var customer in query6)
-        //    //{
-        //    //    System.Console.WriteLine(customer);
-        //    //}
-
-        //    return query6.ToList();
-
-        //}        
+             
 
         public IEnumerable<CustomersOrders> JoinDeCustomersOrders()
         {
@@ -77,10 +55,7 @@ namespace LabNet2021.TP5.LINQ.Logic
         {
             var primerosTresCustomers = context.Customers.Where(r => r.Region == "WA").Take(3).ToList(); ;
 
-            //foreach (var customer in query8)
-            //{
-            //    System.Console.WriteLine(customer.ContactName);
-            //}           
+                      
 
             return primerosTresCustomers;
         }
@@ -107,9 +82,5 @@ namespace LabNet2021.TP5.LINQ.Logic
         }
 
     }
-
-
-
-
     
 }

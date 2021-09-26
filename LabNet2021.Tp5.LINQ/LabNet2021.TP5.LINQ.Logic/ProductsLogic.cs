@@ -12,16 +12,9 @@ namespace LabNet2021.TP5.LINQ.Logic
         public List<Product> ObtenerProductosSinStock()
         {
 
-            var productos = context.Products.Where(p => p.UnitsInStock == 0).ToList();
-
-            //foreach (var product in query2)
-            //{
-            //    Console.WriteLine(product.ProductName);
-            //}
+            var productos = context.Products.Where(p => p.UnitsInStock == 0).ToList();            
 
             return productos;
-
-
         }
 
         public List<Product> ObtenerProductosConStockBaratos()
@@ -29,10 +22,7 @@ namespace LabNet2021.TP5.LINQ.Logic
              var productosBaratos = (from product in context.Products
                               where product.UnitsInStock > 0 && product.UnitPrice > 3
                               select product).ToList();
-            //foreach (var product in query3)
-            //{
-            //    Console.WriteLine(product.ProductName);
-            //}
+            
 
             return productosBaratos;
         }
@@ -48,10 +38,7 @@ namespace LabNet2021.TP5.LINQ.Logic
         public List<Product> ObtenerProductosOrdenadosNombre()
         {
             var listaProductos = context.Products.OrderBy(p => p.ProductName).ToList();
-            //foreach (var product in query9)
-            //{
-            //    Console.WriteLine(product.ProductName);
-            //}
+            
 
             return listaProductos;
         }
@@ -97,17 +84,6 @@ namespace LabNet2021.TP5.LINQ.Logic
             return elementoDeLista;
         }
     }
-
-        
-
-
-
-    //public List<Product> ProductosEnStockBaratos()
-    //{
-    //    var query3 = (from product in context.Products
-    //                  where product.UnitsInStock > 0 & product.UnitPrice > 3
-    //                  select product.ProductName).ToList();
-    //    return query3;
-    //}
+    
 }
 
