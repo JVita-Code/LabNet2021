@@ -1,0 +1,94 @@
+.general
+{
+    margin: 0 auto;
+    background-color: grey;
+    padding: 0 0 0 2.5%;
+    border: black 2px solid;
+    border-radius: 5px;
+    
+    align-self: center;
+}
+
+.labels
+{ 
+    background-color: rgb(220, 241, 245);
+    display: inline-block;
+    width:100px;
+    border: 1px solid black;
+    border-radius: 3px;
+    align-items: center;
+    text-align: center;
+}
+
+.datosEmpresas, .datosPersonales
+{
+    border: solid 2px black;
+    border-radius:3px;
+    border-style:dotted;
+    padding: 1%;
+    vertical-align: middle;
+    text-align: left;
+    width:350px;
+}
+
+
+
+
+
+.datosPersonales
+{
+    padding-bottom: 5%;
+}
+.boton 
+{
+    background-color:rgb(220, 241, 245);
+    border: 3px solid black;
+    border-radius: 3px;
+    font-size: 16px;
+    width: 75px;
+}
+.boton:active 
+{
+    background-color:rgb(130, 226, 245);
+}
+.divboton
+{
+    text-align:center;
+    margin-right: 20px;
+    
+}
+h1, p, label, legend
+{
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+h1{
+    font-family: Helvetica, Arial, sans-serif;
+    text-align: center;
+    margin-right: 20px;
+}
+
+.encabezados
+{
+    margin-left: 2%;
+}
+
+
+
+
+.sx{
+    margin-left: 30%;
+    
+}
+
+.limpiador{
+    
+    
+    margin-left: 80%;
+       
+    
+    
+}
+
+
+

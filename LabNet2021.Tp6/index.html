@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario</title>
+    <link rel="stylesheet" href="style/formulario.css">
+    <style> #edad { width: 50px; } </style>
+    <script type = "text/javascript" src = "scripts/formulario.js"></script>
+</head>
+<body>
+    <div class= "general" style="width: 400px;">
+        
+        <div class="encabezados">
+            <h1>CONTACTO</h1>
+            <p>Completa tus datos.</p>
+        </div>
+        
+        <form action="" method="post" class="formulario" id="form" name="form" autocomplete="off" 
+        onsubmit="return validarCampos()" 
+        onreset="return borrarCampos()">
+
+
+            <fieldset class="datosPersonales">
+            <legend>Información personal</legend>
+            <p>
+                <div class="labels">
+                    <label>Nombre</label>
+                </div>
+                <input name="Nombre" type="text" autofocus/>
+            </p>
+            
+            <p>
+                <div class="labels">
+                    <label>Apellido</label>
+                </div>
+                <input name="Apellido" type="text"/>
+            </p>
+            
+            <p>
+                <div class="labels">
+                    <label>Edad</label>
+                </div>
+                <input name="Edad" id="edad" type="number"/>
+            </p>
+            
+            <p>
+                <div class="sx" >
+                    <input type="radio" class="form-check-input" id='masculino' name="genero" value="masculino">
+                    <label  for="male">Masculino</label>
+                    
+                </div>
+            </p>
+            
+            <p>
+                <div class="sx" >
+                    <input type="radio" class="form-check-input" id='femenino' name="genero" value="femenino">
+                    <label  for="female">Femenino</label>
+                    
+                </div>
+            </p>
+            
+            <p>
+                <div class="sx" >
+                    <input type="radio" class="form-check-input" id='otro' name="genero" value="otro">
+                <label  for="other">Otro</label>
+                    
+                </div>
+            </p>
+            
+             
+            </fieldset>
+            <br>
+
+            <fieldset class="datosEmpresas">
+            <legend>Información adicional</legend>
+            <p>
+                <div class="labels">
+                    <label>Empresa</label>
+                </div>
+                <input name="Empresa" type="text"/>
+            </p>
+            </fieldset>
+            <br>
+            <div class="divboton">
+                <input class="boton" type="submit" value="Submit">
+                <br><br>
+            
+            </div>
+
+            <div class="limpiador">
+                <input type="reset" value="Limpiar">
+            </div>
+        </form>
+        <br>
+        
+    </div>
+</body>
+</html>
