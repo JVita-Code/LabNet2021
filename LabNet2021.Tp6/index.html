@@ -9,6 +9,7 @@
     <style> #edad { width: 50px; } </style>
     <script type = "text/javascript" src = "scripts/formulario.js"></script>
 </head>
+
 <body>
     <div class= "general" style="width: 400px;">
         
@@ -28,21 +29,21 @@
                 <div class="labels">
                     <label>Nombre</label>
                 </div>
-                <input name="Nombre" type="text" autofocus/>
+                <input name="Nombre" type="text" autofocus pattern="[A-Za-z]{3,25}" title="Letras. Cantidad mínima: 3. Tamaño máximo: 25."/>
             </p>
             
             <p>
                 <div class="labels">
                     <label>Apellido</label>
                 </div>
-                <input name="Apellido" type="text"/>
+                <input name="Apellido" type="text" pattern="[A-Za-z]{3,25}" title="Letras. Cantidad mínima: 3. Tamaño máximo: 25."/>
             </p>
             
             <p>
                 <div class="labels">
                     <label>Edad</label>
                 </div>
-                <input name="Edad" id="edad" type="number"/>
+                <input name="Edad" id="edad" type="number" min="5" max="105" title="Introduce una edad"/>
             </p>
             
             <p>
@@ -97,4 +98,5 @@
         
     </div>
 </body>
+
 </html>
