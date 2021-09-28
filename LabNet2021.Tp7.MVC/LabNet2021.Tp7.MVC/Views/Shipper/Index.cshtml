@@ -1,5 +1,38 @@
-﻿@{
+﻿@model List<LabNet2021.Tp7.MVC.Models.ShipperView>
+
+@{
     ViewBag.Tittle = "Shipper Page";
 }
 
 <h1>Index de shipper</h1>
+
+<table class="table-responsive">
+    <thead>
+        <tr>
+            <th scope="col">Shipper ID</th>
+            <th scope="col">CompanyName</th>
+            <th scope="col">Phone</th>
+            <th scope="col">Action</th>
+        </tr>
+    </thead>
+
+
+    <tbody>
+
+        @foreach (var shipper in Model)
+        {
+        <tr>
+            <td>@shipper.Id</td>
+            <td>@shipper.CompanyName</td>
+            <td>@shipper.Phone</td>
+            <td>@Html.ActionLink("Borrar", "Delete", new { id = shipper.Id }, new { onclick = "return confirm('esta seguro de borrar?')" })</td>
+        </tr>
+        }
+
+    </tbody>
+
+</table>
+
+<div>
+    @Html.ActionLink("Insertar Nuevo Shipper", "Insert")
+</div>

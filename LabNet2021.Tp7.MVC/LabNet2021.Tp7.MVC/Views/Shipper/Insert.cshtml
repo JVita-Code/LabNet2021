@@ -1,0 +1,13 @@
+﻿@model LabNet2021.Tp7.MVC.Models.ShipperView
+
+@{
+    ViewBag.Tittle = "Shipper Page";
+}
+
+<h1>Vista para Insertar</h1>
+
+@using (Html.BeginForm("Insert", "Shipper", FormMethod.Post))
+  {
+    <label>CompanyName: </label> @Html.TextBoxFor(s => s.CompanyName)
+    <input class="btn btn-danger" type="submit" value="Guardar"/>
+  }
