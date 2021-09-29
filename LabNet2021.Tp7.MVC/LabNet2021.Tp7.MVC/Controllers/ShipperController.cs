@@ -11,12 +11,12 @@ namespace LabNet2021.Tp7.MVC.Controllers
 {
     public class ShipperController : Controller
     {
-        ShipperLogic logic = new ShipperLogic();
+        ShipperLogic shippersLogic = new ShipperLogic();
         // GET: Shipper
         public ActionResult Index()
         {
-            var logic = new ShipperLogic();
-            List<Shipper> shippers = logic.GetAll();
+            var shippersLogic = new ShipperLogic();
+            List<Shipper> shippers = shippersLogic.GetAll();
 
 
             List<ShipperView> shippersView = shippers.Select(s => new ShipperView
@@ -38,21 +38,31 @@ namespace LabNet2021.Tp7.MVC.Controllers
         {
             try
             {
-                Shipper shipperEntity = new Shipper { CompanyName = shipperView.CompanyName, Phone = shipperView.Phone};
+                Shipper shipperEntity = new Shipper { ShipperID = shipperView.Id, CompanyName = shipperView.CompanyName, Phone = shipperView.Phone};
 
-                logic.Add(shipperEntity);
+                shippersLogic.Add(shipperEntity);
 
                 return RedirectToAction("Index");
             }
             catch (Exception ex)
             {
+               
                 return RedirectToAction("Index", "Error");
             }
         }
         public ActionResult Delete(int id)
         {
-            logic.Delete(id);
-            return RedirectToAction("Index");
+            try
+            {
+                shippersLogic.Delete(id);
+                return RedirectToAction("Index");
+            }
+            catch (Exception)
+            {
+
+                return RedirectToAction("Error");
+            }    
+            
         }
 
         public ActionResult InsertUpdate()
@@ -65,11 +75,31 @@ namespace LabNet2021.Tp7.MVC.Controllers
         {
             Shipper shipperEntity = new Shipper
             {
+                ShipperID = shippersView.Id,
                 CompanyName = shippersView.CompanyName,
-                Phone = shippersView.Phone,
+                Phone = shippersView.Phone,               
                 
             };
-            
+
+            try
+            {
+                if (shippersLogic.GetAll().Any(a => a.ShipperID == shippersView.Id))
+                {
+                    shippersLogic.Update(shipperEntity);
+                }
+                else
+                {
+                    shippersLogic.Add(shipperEntity);
+                }
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return RedirectToAction("Error");
+            }
+
+
+
         }
     }
 }
