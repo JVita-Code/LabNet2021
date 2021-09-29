@@ -16,7 +16,9 @@
         </tr>
     </thead>
 
+{
 
+}
     <tbody>
 
         @foreach (var shipper in Model)
@@ -29,9 +31,23 @@
         </tr>
         }
 
+        
+
     </tbody>
 
 </table>
+
+@*<ul>
+    @foreach (var shipper in Model)
+    {
+        <li>@shipper.Id</li>
+        <li>@shipper.CompanyName</li>
+        <li>@shipper.Phone</li>
+    }
+
+</ul>*@
+
+
 
 <div>
     @Html.ActionLink("Insertar Nuevo Shipper", "Insert")

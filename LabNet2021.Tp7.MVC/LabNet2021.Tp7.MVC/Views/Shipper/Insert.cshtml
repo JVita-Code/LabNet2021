@@ -8,6 +8,21 @@
 
 @using (Html.BeginForm("Insert", "Shipper", FormMethod.Post))
   {
-    <label>CompanyName: </label> @Html.TextBoxFor(s => s.CompanyName)
-    <input class="btn btn-danger" type="submit" value="Guardar"/>
+
+<div class="form-group">
+    <label>CompanyName: </label>
+    @Html.TextBoxFor(s => s.CompanyName, new { @class = "form-control" })
+
+    
+</div>
+
+<div class="form-group">
+    <label>Phone: </label>
+    @Html.TextBoxFor(s => s.Phone, new { @class = "form-control" })
+
+    <input class="btn btn-danger" type="submit" value="Guardar" />
+</div>
+
+
+    
   }

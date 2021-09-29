@@ -18,6 +18,7 @@ namespace LabNet2021.Tp7.MVC.Controllers
             var logic = new ShipperLogic();
             List<Shipper> shippers = logic.GetAll();
 
+
             List<ShipperView> shippersView = shippers.Select(s => new ShipperView
             {
                 Id = s.ShipperID,
@@ -37,7 +38,7 @@ namespace LabNet2021.Tp7.MVC.Controllers
         {
             try
             {
-                Shipper shipperEntity = new Shipper { CompanyName = shipperView.CompanyName };
+                Shipper shipperEntity = new Shipper { CompanyName = shipperView.CompanyName, Phone = shipperView.Phone};
 
                 logic.Add(shipperEntity);
 
@@ -52,6 +53,23 @@ namespace LabNet2021.Tp7.MVC.Controllers
         {
             logic.Delete(id);
             return RedirectToAction("Index");
+        }
+
+        public ActionResult InsertUpdate()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult InsertUpdate(ShipperView shippersView)
+        {
+            Shipper shipperEntity = new Shipper
+            {
+                CompanyName = shippersView.CompanyName,
+                Phone = shippersView.Phone,
+                
+            };
+            
         }
     }
 }
