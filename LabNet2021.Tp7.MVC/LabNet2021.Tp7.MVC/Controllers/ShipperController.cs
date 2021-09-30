@@ -40,7 +40,7 @@ namespace LabNet2021.Tp7.MVC.Controllers
             catch (Exception)
             {
 
-                return RedirectToAction("Error");
+                return View("Error");
             }    
             
         }
@@ -63,6 +63,7 @@ namespace LabNet2021.Tp7.MVC.Controllers
                 
             };
 
+
             if (shipperEntity.ShipperID == 0)
                 shippersLogic.Add(shipperEntity);
             else
@@ -75,9 +76,9 @@ namespace LabNet2021.Tp7.MVC.Controllers
                 {
 
                     return View("Error");
-                }         
+                }
             }
-            return RedirectToAction("Index"); 
+            return RedirectToAction("Index");
 
         }
     }

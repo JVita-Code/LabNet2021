@@ -4,15 +4,22 @@
     ViewBag.Tittle = "Shipper Page";
 }
 
-<h1>Index de shipper</h1>
+<h1>List of Shippers</h1>
 
-<table class="table-bordered">
-    <thead>
+<div>
+    @Html.ActionLink("Insertar/Updatear Shipper", "InsertUpdate")
+    <br />
+    <br />
+</div>
+
+<table id="shippers" class="table table-bordered">
+    <thead class="bg-primary">
         <tr>
             <th scope="col">Shipper ID</th>
-            <th scope="col">CompanyName</th>
+            <th scope="col">Company Name</th>
             <th scope="col">Phone</th>
             <th scope="col">Action</th>
+            @*<th scope="col">Test</th>*@
         </tr>
     </thead>
 
@@ -25,6 +32,9 @@
             <td>@shipper.CompanyName</td>
             <td>@shipper.Phone</td>
             <td>@Html.ActionLink("Borrar", "Delete", new { id = shipper.ShipperID }, new { onclick = "return confirm('esta seguro de borrar?')" })</td>
+            @*<td>
+                <button class="btn-link" data-shipper-id="@shipper.ShipperID" js-delete>Delete</button>
+            </td>*@
         </tr>
         }
 
@@ -34,6 +44,6 @@
 
 </table>
 
-<div>
-    @Html.ActionLink("Insertar Shipper", "InsertUpdate")
-</div>
+
+
+   

@@ -6,6 +6,10 @@
 
 <h1>Insert & Update</h1>
 
+
+
+
+
 @using (Html.BeginForm("InsertUpdate", "Shipper", FormMethod.Post))
 {
 
@@ -13,6 +17,7 @@
     <div class="form-group">
         <label>ShipperID: </label>
         @Html.TextBoxFor(s => s.ShipperID, new { @class = "form-control" })
+        @*@Html.HiddenFor(s => s.ShipperID, new { @class = "form-control" })*@
 
 
     </div>
@@ -33,7 +38,9 @@
 
         <input class="btn btn-danger" type="submit" value="Guardar" />
     </div>
-
-
-
 }
+
+@*@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+}*@
