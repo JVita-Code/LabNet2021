@@ -44,7 +44,7 @@ namespace LabNet2021.Tp4.EF.Logic
         {
             var shipperUpdate = context.Shippers.Find(field.ShipperID);
 
-            
+
             if (shipperUpdate != null)
             {
                 try
@@ -61,6 +61,7 @@ namespace LabNet2021.Tp4.EF.Logic
                 catch (DbEntityValidationException e)
                 {
                     throw e;
+                     
                 }
             }
             else

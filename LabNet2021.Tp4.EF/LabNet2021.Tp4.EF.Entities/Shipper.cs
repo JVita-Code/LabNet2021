@@ -16,11 +16,11 @@ namespace LabNet2021.Tp4.EF.Entities
         
         public int ShipperID { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Por favor coloque nombre")]
         [StringLength(40)]
         public string CompanyName { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Por favor coloque teléfono")]
         [StringLength(24)]
         public string Phone { get; set; }
 

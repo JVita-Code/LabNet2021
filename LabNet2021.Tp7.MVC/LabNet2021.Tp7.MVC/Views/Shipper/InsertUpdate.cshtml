@@ -20,6 +20,7 @@
     <div class="form-group">
         <label>CompanyName: </label>
         @Html.TextBoxFor(s => s.CompanyName, new { @class = "form-control" })
+        @Html.ValidationMessageFor(s => s.CompanyName)
 
 
     </div>
@@ -27,7 +28,7 @@
     <div class="form-group">
         <label>Phone: </label>
         @Html.TextBoxFor(s => s.Phone, new { @class = "form-control" })
-
+        @Html.ValidationMessageFor(s => s.Phone)
         <br />
 
         <input class="btn btn-danger" type="submit" value="Guardar" />

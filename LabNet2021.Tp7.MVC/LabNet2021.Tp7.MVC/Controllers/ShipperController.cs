@@ -3,6 +3,7 @@ using LabNet2021.Tp4.EF.Logic;
 using LabNet2021.Tp7.MVC.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Validation;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -52,7 +53,7 @@ namespace LabNet2021.Tp7.MVC.Controllers
         [HttpPost]
         public ActionResult InsertUpdate(ShipperView shippersView)
         {
-
+            
             Shipper shipperEntity = new Shipper
             {
 
@@ -66,31 +67,17 @@ namespace LabNet2021.Tp7.MVC.Controllers
                 shippersLogic.Add(shipperEntity);
             else
             {
-                shippersLogic.Update(shipperEntity);
+                try
+                {
+                    shippersLogic.Update(shipperEntity);
+                }
+                catch (DbEntityValidationException e)
+                {
+
+                    return View("Error");
+                }         
             }
-            return RedirectToAction("Index");
-
-            //try
-            //{
-            //    if (shippersLogic.GetAll().Any(a => a.ShipperID == shippersView.ShipperID))
-            //    {
-
-            //        shippersLogic.Update(shipperEntity);
-            //        //shippersLogic.SetShipperDetails(shipperEntity.CompanyName, shipperEntity.Phone);
-
-            //    }
-            //    else
-            //    {
-            //        shippersLogic.Add(shipperEntity);
-            //    }
-            //    return RedirectToAction("Index");
-            //}
-            //catch
-            //{
-            //    return RedirectToAction("Error");
-            //}
-
-
+            return RedirectToAction("Index"); 
 
         }
     }
