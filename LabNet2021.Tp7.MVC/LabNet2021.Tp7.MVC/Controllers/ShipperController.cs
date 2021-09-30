@@ -15,41 +15,20 @@ namespace LabNet2021.Tp7.MVC.Controllers
         // GET: Shipper
         public ActionResult Index()
         {
-            var shippersLogic = new ShipperLogic();
+            
             List<Shipper> shippers = shippersLogic.GetAll();
 
 
             List<ShipperView> shippersView = shippers.Select(s => new ShipperView
             {
-                Id = s.ShipperID,
+                ShipperID = s.ShipperID,
                 CompanyName = s.CompanyName,
                 Phone = s.Phone
 
             }).ToList();
             return View(shippersView);
-        }
-
-        public ActionResult Insert()
-        {
-            return View();
-        }
-        [HttpPost]
-        public ActionResult Insert(ShipperView shipperView)
-        {
-            try
-            {
-                Shipper shipperEntity = new Shipper { ShipperID = shipperView.Id, CompanyName = shipperView.CompanyName, Phone = shipperView.Phone};
-
-                shippersLogic.Add(shipperEntity);
-
-                return RedirectToAction("Index");
-            }
-            catch (Exception ex)
-            {
-               
-                return RedirectToAction("Index", "Error");
-            }
-        }
+        }        
+        
         public ActionResult Delete(int id)
         {
             try
@@ -73,30 +52,43 @@ namespace LabNet2021.Tp7.MVC.Controllers
         [HttpPost]
         public ActionResult InsertUpdate(ShipperView shippersView)
         {
+
             Shipper shipperEntity = new Shipper
             {
-                ShipperID = shippersView.Id,
+
                 CompanyName = shippersView.CompanyName,
-                Phone = shippersView.Phone,               
+                Phone = shippersView.Phone,
+                ShipperID = shippersView.ShipperID
                 
             };
 
-            try
+            if (shipperEntity.ShipperID == 0)
+                shippersLogic.Add(shipperEntity);
+            else
             {
-                if (shippersLogic.GetAll().Any(a => a.ShipperID == shippersView.Id))
-                {
-                    shippersLogic.Update(shipperEntity);
-                }
-                else
-                {
-                    shippersLogic.Add(shipperEntity);
-                }
-                return RedirectToAction("Index");
+                shippersLogic.Update(shipperEntity);
             }
-            catch
-            {
-                return RedirectToAction("Error");
-            }
+            return RedirectToAction("Index");
+
+            //try
+            //{
+            //    if (shippersLogic.GetAll().Any(a => a.ShipperID == shippersView.ShipperID))
+            //    {
+
+            //        shippersLogic.Update(shipperEntity);
+            //        //shippersLogic.SetShipperDetails(shipperEntity.CompanyName, shipperEntity.Phone);
+
+            //    }
+            //    else
+            //    {
+            //        shippersLogic.Add(shipperEntity);
+            //    }
+            //    return RedirectToAction("Index");
+            //}
+            //catch
+            //{
+            //    return RedirectToAction("Error");
+            //}
 
 
 

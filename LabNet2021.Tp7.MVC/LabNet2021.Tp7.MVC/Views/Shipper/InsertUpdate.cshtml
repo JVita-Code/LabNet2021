@@ -4,15 +4,15 @@
     ViewBag.Tittle = "Shipper Page";
 }
 
-<h1>Vista para Insertar</h1>
+<h1>Insert & Update</h1>
 
-@using (Html.BeginForm("Insert", "Shipper", FormMethod.Post))
+@using (Html.BeginForm("InsertUpdate", "Shipper", FormMethod.Post))
 {
 
 
     <div class="form-group">
         <label>ShipperID: </label>
-        @Html.TextBoxFor(s => s.Id, new { @class = "form-control" })
+        @Html.TextBoxFor(s => s.ShipperID, new { @class = "form-control" })
 
 
     </div>
@@ -27,6 +27,8 @@
     <div class="form-group">
         <label>Phone: </label>
         @Html.TextBoxFor(s => s.Phone, new { @class = "form-control" })
+
+        <br />
 
         <input class="btn btn-danger" type="submit" value="Guardar" />
     </div>

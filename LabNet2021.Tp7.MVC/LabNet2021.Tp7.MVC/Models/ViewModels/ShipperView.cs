@@ -7,7 +7,7 @@ namespace LabNet2021.Tp7.MVC.Models
 {
     public class ShipperView
     {
-        public int Id { get; set; }
+        public int ShipperID { get; set; }
         public string CompanyName { get; set; }
         public string Phone { get; set; }
     }

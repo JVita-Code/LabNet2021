@@ -6,7 +6,7 @@
 
 <h1>Index de shipper</h1>
 
-<table class="table-responsive">
+<table class="table-bordered">
     <thead>
         <tr>
             <th scope="col">Shipper ID</th>
@@ -16,18 +16,15 @@
         </tr>
     </thead>
 
-{
-
-}
     <tbody>
 
         @foreach (var shipper in Model)
         {
         <tr>
-            <td>@shipper.Id</td>
+            <td>@shipper.ShipperID</td>
             <td>@shipper.CompanyName</td>
             <td>@shipper.Phone</td>
-            <td>@Html.ActionLink("Borrar", "Delete", new { id = shipper.Id }, new { onclick = "return confirm('esta seguro de borrar?')" })</td>
+            <td>@Html.ActionLink("Borrar", "Delete", new { id = shipper.ShipperID }, new { onclick = "return confirm('esta seguro de borrar?')" })</td>
         </tr>
         }
 
@@ -37,18 +34,6 @@
 
 </table>
 
-@*<ul>
-    @foreach (var shipper in Model)
-    {
-        <li>@shipper.Id</li>
-        <li>@shipper.CompanyName</li>
-        <li>@shipper.Phone</li>
-    }
-
-</ul>*@
-
-
-
 <div>
-    @Html.ActionLink("Insertar Nuevo Shipper", "Insert")
+    @Html.ActionLink("Insertar Shipper", "InsertUpdate")
 </div>

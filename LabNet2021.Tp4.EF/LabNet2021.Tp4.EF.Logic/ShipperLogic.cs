@@ -1,6 +1,7 @@
 ﻿using LabNet2021.Tp4.EF.Entities;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Validation;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -43,21 +44,48 @@ namespace LabNet2021.Tp4.EF.Logic
         {
             var shipperUpdate = context.Shippers.Find(field.ShipperID);
 
-            if (shipperUpdate == null)
+            
+            if (shipperUpdate != null)
             {
-                throw new NullReferenceException();
+                try
+                {
+
+                    {
+                        shipperUpdate.CompanyName = field.CompanyName;
+                        shipperUpdate.Phone = field.Phone;
+
+                        context.SaveChanges();
+                    }
+                }
+
+                catch (DbEntityValidationException e)
+                {
+                    throw e;
+                }
             }
             else
             {
-                shipperUpdate.CompanyName = field.CompanyName;
-
-                shipperUpdate.Phone = field.Phone;
-                context.SaveChanges();
+                throw new NullReferenceException();
             }
 
+
+            //if (shipperUpdate != null)
+            //{
+            //    shipperUpdate.CompanyName = field.CompanyName;
+            //    shipperUpdate.Phone = field.Phone;
+
+
+            //    //context.Shippers.Attach(field);
+            //    context.SaveChanges();
+
+
+            //}
+            //else
+            //{
+            //    throw new NullReferenceException();
+            //}
+
         }
-
-        
-
     }
 }
+
