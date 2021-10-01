@@ -64,8 +64,10 @@ namespace LabNet2021.Tp4.EF.Logic
             }
             else
             {
-                throw new NullReferenceException();
+                context.Shippers.Add(field);
+                context.SaveChanges();
             }
+
         }
     }
 }

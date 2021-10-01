@@ -11,9 +11,8 @@
     
 </div>*@
 <div>
-    <a href="~/Shipper/InsertUpdate" class="btn btn-success">Insert</a>
+    <a href="~/Shipper/InsertUpdate" class="btn btn-success" id="btnInsert">Insert</a>
     <br /><br />
-
 </div>
 
 <table id="shippers" class="table table-bordered">
@@ -22,7 +21,7 @@
             <th scope="col">Shipper ID</th>
             <th scope="col">Company Name</th>
             <th scope="col">Phone</th>
-            <th scope="col">Action</th>
+            <th scope="col">Update</th>
             <th scope="col">Delete</th>
         </tr>
     </thead>
@@ -35,11 +34,13 @@
             <td>@shipper.ShipperID</td>
             <td>@shipper.CompanyName</td>
             <td>@shipper.Phone</td>
-            @*<td>@Html.ActionLink("Borrar", "Delete", new { id = shipper.ShipperID }, new { onclick = "return confirm('Esta seguro que desea borrar?')" })</td>*@
-            <td>@Html.ActionLink("Actualizar", "InsertUpdate", new { id = shipper.ShipperID })</td>
-            <td>                
-                <input onclick="jsDelete(@shipper.ShipperID);" class="btn btn-danger" type="button" value="Delete" />
-            </td>            
+            @*<td>@Html.ActionLink("Borrar", "Delete", new { id = shipper.ShipperID }, new { onclick = "return confirm('Esta seguro que desea borrar?')" })</td>*@            
+            <td>
+                <input onclick="document.location.href='@Url.Content("~/Shipper/InsertUpdate/" + @shipper.ShipperID)'" class="btn btn-sm" type="button" value="Actualizar" />
+            </td>
+            <td>
+                <input onclick="jsDelete(@shipper.ShipperID);" class="btn btn-danger" type="button" value="Delete"/>
+            </td>
         </tr>
         }        
 
@@ -49,19 +50,21 @@
 
 <script>
 
+    var CONTENT = "borrado";
     function jsDelete(id) {
         
         url = "/Shipper/Delete/" + id;
 
         $.post(url, function (data) {
-
-            if (data == "1") {
+            if(confirm("¿Está seguro que desea borrar el registro?"))
+            if (data == CONTENT) {
                 document.location.href="@Url.Content("~/Shipper/")"
             } else {
                 alert("Ocurrio un error")
             }
         })
     }
+    
 </script>
 
 
