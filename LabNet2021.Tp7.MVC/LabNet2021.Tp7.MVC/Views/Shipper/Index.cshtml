@@ -4,14 +4,15 @@
     ViewBag.Tittle = "Shipper Page";
 }
 
-<h1>List of Shippers</h1>
+    <h1>@ViewBag.Tittle</h1>
 
+@*<div>
+    @Html.ActionLink("Insertar/Updatear Shippers", "InsertUpdate")
+    
+</div>*@
 <div>
-    @Html.ActionLink("Insertar/Updatear Shipper", "InsertUpdate")
-    <br />
-    <br />
+    <a href="~/Shipper/InsertUpdate" class="btn btn-primary">Insert</a>
 </div>
-
 <table id="shippers" class="table table-bordered">
     <thead class="bg-primary">
         <tr>
@@ -19,7 +20,7 @@
             <th scope="col">Company Name</th>
             <th scope="col">Phone</th>
             <th scope="col">Action</th>
-            @*<th scope="col">Test</th>*@
+            <th scope="col">Delete</th>
         </tr>
     </thead>
 
@@ -31,18 +32,38 @@
             <td>@shipper.ShipperID</td>
             <td>@shipper.CompanyName</td>
             <td>@shipper.Phone</td>
-            <td>@Html.ActionLink("Borrar", "Delete", new { id = shipper.ShipperID }, new { onclick = "return confirm('esta seguro de borrar?')" })</td>
-            @*<td>
-                <button class="btn-link" data-shipper-id="@shipper.ShipperID" js-delete>Delete</button>
-            </td>*@
+            @*<td>@Html.ActionLink("Borrar", "Delete", new { id = shipper.ShipperID }, new { onclick = "return confirm('Esta seguro que desea borrar?')" })</td>*@
+            <td>@Html.ActionLink("Actualizar!!!!!!!", "InsertUpdate", new { id = shipper.ShipperID })</td>
+            <td>                
+                <input onclick="jsDelete(@shipper.ShipperID);" class="btn btn-danger" type="button" value="Delete" />
+            </td>
+            
         </tr>
-        }
-
-        
+        }        
 
     </tbody>
 
 </table>
+
+
+
+<script>
+
+    function jsDelete(id) {
+        
+        url = "/Shipper/Delete/" + id;
+
+        $.post(url, function (data) {
+
+            if (data == "1") {
+                document.location.href="@Url.Content("~/Shipper/")"
+            } else {
+                alert("Ocurrio un error")
+            }
+        })
+    }
+
+</script>
 
 
 

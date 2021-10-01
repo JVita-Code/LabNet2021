@@ -30,12 +30,14 @@ namespace LabNet2021.Tp7.MVC.Controllers
             return View(shippersView);
         }        
         
+        [HttpPost]
         public ActionResult Delete(int id)
         {
             try
             {
                 shippersLogic.Delete(id);
-                return RedirectToAction("Index");
+                //return RedirectToAction("Index");
+                return Content("1");
             }
             catch (Exception)
             {
@@ -45,6 +47,7 @@ namespace LabNet2021.Tp7.MVC.Controllers
             
         }
 
+        [HttpGet]
         public ActionResult InsertUpdate()
         {
             return View();
@@ -53,16 +56,22 @@ namespace LabNet2021.Tp7.MVC.Controllers
         [HttpPost]
         public ActionResult InsertUpdate(ShipperView shippersView)
         {
+            ShipperLogic shippersLogic = new ShipperLogic();
             
-            Shipper shipperEntity = new Shipper
+            Shipper shipperEntity =  new Shipper
             {
 
+                
                 CompanyName = shippersView.CompanyName,
                 Phone = shippersView.Phone,
                 ShipperID = shippersView.ShipperID
                 
             };
 
+            if (!ModelState.IsValid)
+            {
+                return View(shippersView);
+            }
 
             if (shipperEntity.ShipperID == 0)
                 shippersLogic.Add(shipperEntity);
@@ -78,8 +87,34 @@ namespace LabNet2021.Tp7.MVC.Controllers
                     return View("Error");
                 }
             }
+            
             return RedirectToAction("Index");
 
+
+            //if (String.IsNullOrEmpty(shipperEntity.ToString()))
+
+            //    shippersLogic.Add(shipperEntity);
+            //else
+            //{
+            //    try
+            //    {
+            //        shippersLogic.Update(shipperEntity);
+            //    }
+            //    catch (DbEntityValidationException e)
+            //    {
+
+            //        return View("Error");
+            //    }
+
+            //}
+            //return RedirectToAction("Index");
+
+
         }
+
+
+
+
+
     }
 }

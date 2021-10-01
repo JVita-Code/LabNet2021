@@ -15,13 +15,12 @@ namespace LabNet2021.Tp4.EF.Entities
         }
         
         public int ShipperID { get; set; }
-
-        //[ShipperFormCustomValidation]
-        [Required(ErrorMessage = "Por favor coloque nombre")]
+        
+        [Required]
         [StringLength(40)]
         public string CompanyName { get; set; }
 
-        [Required(ErrorMessage = "Por favor coloque teléfono")]
+        [Required]
         [StringLength(24)]
         public string Phone { get; set; }
 
