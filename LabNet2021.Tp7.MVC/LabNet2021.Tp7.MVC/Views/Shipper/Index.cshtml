@@ -11,8 +11,11 @@
     
 </div>*@
 <div>
-    <a href="~/Shipper/InsertUpdate" class="btn btn-primary">Insert</a>
+    <a href="~/Shipper/InsertUpdate" class="btn btn-success">Insert</a>
+    <br /><br />
+
 </div>
+
 <table id="shippers" class="table table-bordered">
     <thead class="bg-primary">
         <tr>
@@ -33,19 +36,16 @@
             <td>@shipper.CompanyName</td>
             <td>@shipper.Phone</td>
             @*<td>@Html.ActionLink("Borrar", "Delete", new { id = shipper.ShipperID }, new { onclick = "return confirm('Esta seguro que desea borrar?')" })</td>*@
-            <td>@Html.ActionLink("Actualizar!!!!!!!", "InsertUpdate", new { id = shipper.ShipperID })</td>
+            <td>@Html.ActionLink("Actualizar", "InsertUpdate", new { id = shipper.ShipperID })</td>
             <td>                
                 <input onclick="jsDelete(@shipper.ShipperID);" class="btn btn-danger" type="button" value="Delete" />
-            </td>
-            
+            </td>            
         </tr>
         }        
 
     </tbody>
 
 </table>
-
-
 
 <script>
 
@@ -62,7 +62,6 @@
             }
         })
     }
-
 </script>
 
 

@@ -11,12 +11,11 @@ namespace LabNet2021.Tp7.MVC.Models
     {
         protected override ValidationResult IsValid(object value, ValidationContext validationContext)
         {
-            var shipper = (Shipper)validationContext.ObjectInstance;
+            var shipper = (ShipperView)validationContext.ObjectInstance;
 
             return (shipper.Phone != null && shipper.CompanyName !=null ) 
                 ? ValidationResult.Success 
-                : new ValidationResult("Error: no puede dejar name o phone en blanco");
-            
+                : new ValidationResult("Este campo no puede quedar vacío.");         
         }
     }
 }

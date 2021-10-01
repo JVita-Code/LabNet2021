@@ -43,8 +43,7 @@ namespace LabNet2021.Tp7.MVC.Controllers
             {
 
                 return View("Error");
-            }    
-            
+            }   
         }
 
         [HttpGet]
@@ -86,35 +85,8 @@ namespace LabNet2021.Tp7.MVC.Controllers
 
                     return View("Error");
                 }
-            }
-            
-            return RedirectToAction("Index");
-
-
-            //if (String.IsNullOrEmpty(shipperEntity.ToString()))
-
-            //    shippersLogic.Add(shipperEntity);
-            //else
-            //{
-            //    try
-            //    {
-            //        shippersLogic.Update(shipperEntity);
-            //    }
-            //    catch (DbEntityValidationException e)
-            //    {
-
-            //        return View("Error");
-            //    }
-
-            //}
-            //return RedirectToAction("Index");
-
-
+            }            
+            return RedirectToAction("Index");    
         }
-
-
-
-
-
     }
 }

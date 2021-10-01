@@ -45,7 +45,6 @@ namespace LabNet2021.Tp4.EF.Logic
             
             var shipperUpdate = context.Shippers.Find(field.ShipperID);
 
-
             if (shipperUpdate != null)
             {
                 try
@@ -58,35 +57,15 @@ namespace LabNet2021.Tp4.EF.Logic
                         context.SaveChanges();
                     }
                 }
-
-                catch (DbEntityValidationException e)
+                catch (Exception e)
                 {
-                    throw e;
-                     
+                    throw e;                     
                 }
             }
             else
             {
                 throw new NullReferenceException();
             }
-
-
-            //if (shipperUpdate != null)
-            //{
-            //    shipperUpdate.CompanyName = field.CompanyName;
-            //    shipperUpdate.Phone = field.Phone;
-
-
-            //    //context.Shippers.Attach(field);
-            //    context.SaveChanges();
-
-
-            //}
-            //else
-            //{
-            //    throw new NullReferenceException();
-            //}
-
         }
     }
 }
