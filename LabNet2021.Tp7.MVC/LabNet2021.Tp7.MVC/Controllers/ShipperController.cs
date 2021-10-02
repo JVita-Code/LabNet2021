@@ -37,8 +37,7 @@ namespace LabNet2021.Tp7.MVC.Controllers
         {
             try
             {
-                shippersLogic.Delete(id);
-                //return RedirectToAction("Index");
+                shippersLogic.Delete(id);                
                 return Content(RESULTADO);
             }
             catch (Exception)
@@ -86,8 +85,8 @@ namespace LabNet2021.Tp7.MVC.Controllers
 
                     return View("Error");
                 }
-            }            
-            return RedirectToAction("Index");    
+            }
+            return RedirectToAction("Index");
         }
     }
 }
