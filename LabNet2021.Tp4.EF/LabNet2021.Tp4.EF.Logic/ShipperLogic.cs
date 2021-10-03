@@ -40,6 +40,12 @@ namespace LabNet2021.Tp4.EF.Logic
             return context.Shippers.ToList();
         }
 
+        public Shipper GetShipper(int id)
+        {
+            var shipper = context.Shippers.Where(s => s.ShipperID == id).FirstOrDefault();
+            return shipper;
+        }
+
         public void Update(Shipper field)
         {
             

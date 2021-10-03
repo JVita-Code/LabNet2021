@@ -5,9 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
-using System.Web.Mvc;
-using HttpPatchAttribute = System.Web.Http.HttpPatchAttribute;
-using HttpPostAttribute = System.Web.Http.HttpPostAttribute;
+
 
 namespace LabNet2021.Tp8.API.Controllers
 {
@@ -15,8 +13,9 @@ namespace LabNet2021.Tp8.API.Controllers
     {
         // GET: Shippers
 
-        ShipperLogic shipperlogic = new ShipperLogic();        
+        ShipperLogic shipperlogic = new ShipperLogic();
 
+        [HttpGet]
         public List<ShipperDto> GetShippers()
         {
             List<ShipperDto> shipperAPI = shipperlogic.GetAll().Select(s => new ShipperDto
@@ -26,33 +25,47 @@ namespace LabNet2021.Tp8.API.Controllers
                 Phone = s.Phone,
             }).ToList();
             return shipperAPI;
-        }  
-        
-        
+        }
+
+        //[HttpPost]
+        //public IHttpActionResult Add(ShipperDto shipperAPI)
+        //{
+        //    if (!ModelState.IsValid)
+        //        return BadRequest("Error, verifique los datos");
+
+        //    Shipper shipper = new Shipper()
+        //    {
+        //        ShipperID = shipperAPI.ShipperID,
+        //        CompanyName = shipperAPI.CompanyName,
+        //        Phone = shipperAPI.Phone,
+        //    };
+        //    shipperlogic.Add(shipper);
+        //    return Ok("El Shipper fue añadido.");
+        //}
 
         [HttpPost]
         public IHttpActionResult Add(ShipperDto shipperAPI)
         {
-            try
-            {
-                Shipper shipper = new Shipper()
-                {
-                    ShipperID = shipperAPI.ShipperID,
-                    CompanyName = shipperAPI.CompanyName,
-                    Phone = shipperAPI.CompanyName,
-                };
-                shipperlogic.Add(shipper);
-                return Ok("El Shipper fue añadido.");
-                
-            }
-            catch (Exception)
-            {
+            if (!ModelState.IsValid)
+                return BadRequest("Error, verifique los datos");
 
-                return BadRequest("Error: verifique los datos");
-            }
+            Shipper shipper = new Shipper()
+            {
+                ShipperID = shipperAPI.ShipperID,
+                CompanyName = shipperAPI.CompanyName,
+                Phone = shipperAPI.Phone,
+            };
+            shipperlogic.Add(shipper);
+            shipperAPI.ShipperID = shipper.ShipperID;
+            
+            return Created(new Uri(Request.RequestUri + "/" + shipper.ShipperID), shipperAPI);
+
+            //var result = Created(new Uri(Request.RequestUri + "/" + shipper.ShipperID), shipperAPI);
+            //var response = ResponseMessage(HttpStatus);
+            //return response;
         }
 
-        [HttpPost]
+        [HttpDelete]
         public IHttpActionResult Delete(int id)
         {
             try
@@ -62,15 +75,13 @@ namespace LabNet2021.Tp8.API.Controllers
             }
             catch (Exception)
             {
-
                 return BadRequest("Error: verifique los datos");
             }
         }
 
-        [HttpPatch]
+        [HttpPut]
         public IHttpActionResult Update(ShipperDto shipperAPI)
         {
-
             try
             {
                 Shipper shipper = new Shipper()
@@ -80,34 +91,13 @@ namespace LabNet2021.Tp8.API.Controllers
                     Phone = shipperAPI.Phone,
                 };
                 shipperlogic.Update(shipper);
+                
                 return Ok("El shipper fue modificado.");
-
             }
             catch (Exception)
             {
-
                 return BadRequest("Error: verifique los datos.");
             }
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        //public ActionResult Index()
-        //{
-        //    return View();
-        //}
     }
 }
