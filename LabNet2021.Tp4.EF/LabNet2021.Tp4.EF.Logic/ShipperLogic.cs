@@ -13,8 +13,16 @@ namespace LabNet2021.Tp4.EF.Logic
     {
         public void Add(Shipper field)
         {
-            context.Shippers.Add(field);
-            context.SaveChanges();
+            try
+            {
+                context.Shippers.Add(field);
+                context.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            
         }
 
         public static void SetShipperDetails(string companyName, string companyPhone)
@@ -30,9 +38,17 @@ namespace LabNet2021.Tp4.EF.Logic
 
         public void Delete(int id)
         {
-            var deleteId = context.Shippers.Find(id);
-            context.Shippers.Remove(deleteId);
-            context.SaveChanges();
+            try
+            {
+                var deleteId = context.Shippers.Find(id);
+                context.Shippers.Remove(deleteId);
+                context.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            
         }
 
         public List<Shipper> GetAll()
@@ -42,8 +58,16 @@ namespace LabNet2021.Tp4.EF.Logic
 
         public Shipper GetShipper(int id)
         {
-            var shipper = context.Shippers.Where(s => s.ShipperID == id).FirstOrDefault();
-            return shipper;
+            try
+            {
+                var shipper = context.Shippers.Where(s => s.ShipperID == id).FirstOrDefault();
+                return shipper;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }            
         }
 
         public void Update(Shipper field)

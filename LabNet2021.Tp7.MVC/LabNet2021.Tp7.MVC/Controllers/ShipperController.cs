@@ -15,7 +15,7 @@ namespace LabNet2021.Tp7.MVC.Controllers
         private const String RESULTADO = "borrado";
 
         ShipperLogic shippersLogic = new ShipperLogic();
-        // GET: Shipper
+        
         public ActionResult Index()
         {
             
@@ -40,7 +40,7 @@ namespace LabNet2021.Tp7.MVC.Controllers
                 shippersLogic.Delete(id);                
                 return Content(RESULTADO);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 return View("Error");
             }   

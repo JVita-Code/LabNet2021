@@ -16,7 +16,7 @@ namespace LabNet2021.Tp8.API_MVC_FINAL.Controllers
         string Baseurl = "http://hp-api.herokuapp.com/";
         public async Task<ActionResult> Index()
         {
-            List<Characters> CharInfo = new List<Characters>();
+            List<CharactersView> CharInfo = new List<CharactersView>();
             using (var client = new HttpClient())
             {
                 client.BaseAddress = new Uri(Baseurl);
@@ -29,7 +29,7 @@ namespace LabNet2021.Tp8.API_MVC_FINAL.Controllers
                 if (Res.IsSuccessStatusCode)
                 {
                     var CharResponse = Res.Content.ReadAsStringAsync().Result;
-                    CharInfo = JsonConvert.DeserializeObject<List<Characters>>(CharResponse);
+                    CharInfo = JsonConvert.DeserializeObject<List<CharactersView>>(CharResponse);
                 }
                 return View(CharInfo);
             }

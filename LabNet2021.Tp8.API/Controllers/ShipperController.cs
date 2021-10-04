@@ -47,7 +47,7 @@ namespace LabNet2021.Tp8.API.Controllers
         public IHttpActionResult Add(ShipperDto shipperAPI)
         {
             if (!ModelState.IsValid)
-                return BadRequest("Error, verifique los datos");
+                return BadRequest(ModelState);
 
             Shipper shipper = new Shipper()
             {
@@ -59,10 +59,6 @@ namespace LabNet2021.Tp8.API.Controllers
             shipperAPI.ShipperID = shipper.ShipperID;
             
             return Created(new Uri(Request.RequestUri + "/" + shipper.ShipperID), shipperAPI);
-
-            //var result = Created(new Uri(Request.RequestUri + "/" + shipper.ShipperID), shipperAPI);
-            //var response = ResponseMessage(HttpStatus);
-            //return response;
         }
 
         [HttpDelete]
@@ -73,7 +69,7 @@ namespace LabNet2021.Tp8.API.Controllers
                 shipperlogic.Delete(id);
                 return Ok("El shipper fue eliminado.");
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 return BadRequest("Error: verifique los datos");
             }
@@ -82,6 +78,7 @@ namespace LabNet2021.Tp8.API.Controllers
         [HttpPut]
         public IHttpActionResult Update(ShipperDto shipperAPI)
         {
+            
             try
             {
                 Shipper shipper = new Shipper()
@@ -94,7 +91,7 @@ namespace LabNet2021.Tp8.API.Controllers
                 
                 return Ok("El shipper fue modificado.");
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 return BadRequest("Error: verifique los datos.");
             }

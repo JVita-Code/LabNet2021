@@ -5,7 +5,7 @@ using System.Web;
 
 namespace LabNet2021.Tp8.API_MVC_FINAL.Models
 {
-    public class Characters
+    public class CharactersView
     {
         public string name { get; set; }
         public string species { get; set; }
