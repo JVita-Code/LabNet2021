@@ -27,21 +27,6 @@ namespace LabNet2021.Tp8.API.Controllers
             return shipperAPI;
         }
 
-        //[HttpPost]
-        //public IHttpActionResult Add(ShipperDto shipperAPI)
-        //{
-        //    if (!ModelState.IsValid)
-        //        return BadRequest("Error, verifique los datos");
-
-        //    Shipper shipper = new Shipper()
-        //    {
-        //        ShipperID = shipperAPI.ShipperID,
-        //        CompanyName = shipperAPI.CompanyName,
-        //        Phone = shipperAPI.Phone,
-        //    };
-        //    shipperlogic.Add(shipper);
-        //    return Ok("El Shipper fue añadido.");
-        //}
 
         [HttpPost]
         public IHttpActionResult Add(ShipperDto shipperAPI)
