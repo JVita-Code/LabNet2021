@@ -6,7 +6,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 import { CrudShippersModule } from './modules/crud-shippers/crud-shippers.module';
+
 
 
 @NgModule({
@@ -18,7 +20,7 @@ import { CrudShippersModule } from './modules/crud-shippers/crud-shippers.module
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    CrudShippersModule
+    CrudShippersModule,
     
   ],
   providers: [],

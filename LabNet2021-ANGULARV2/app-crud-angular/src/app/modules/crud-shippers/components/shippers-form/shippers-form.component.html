@@ -1,1 +1,14 @@
-<p>shippers-form works!</p>
+<form [formGroup]="form">
+
+<div class="form-group">
+    <label class="col-form-label">Company Name</label>
+    <input formControlName="companyName" type="text" class="form-control">
+</div>
+<div class="form-group">
+    <label class="col-form-label">Phone</label>
+    <input formControlName="phone" type="text" class="form-control">
+</div>
+<button type="submit" class="btn btn-danger">Volver</button>
+<button type="submit" class="btn btn-primary">Guardar</button>
+
+</form>
