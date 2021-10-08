@@ -1,20 +1,17 @@
-/* tslint:disable:no-unused-variable */
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
-import { DebugElement } from '@angular/core';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ShippersFormComponent } from './shippersForm.component';
+import { ShippersFormComponent } from './shippers-form.component';
 
 describe('ShippersFormComponent', () => {
   let component: ShippersFormComponent;
   let fixture: ComponentFixture<ShippersFormComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
       declarations: [ ShippersFormComponent ]
     })
     .compileComponents();
-  }));
+  });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(ShippersFormComponent);

@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-shippersList',
-  templateUrl: './shippersList.component.html',
-  styleUrls: ['./shippersList.component.css']
+  selector: 'app-shippers-list',
+  templateUrl: './shippers-list.component.html',
+  styleUrls: ['./shippers-list.component.css']
 })
 export class ShippersListComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {
+  ngOnInit(): void {
   }
 
 }
