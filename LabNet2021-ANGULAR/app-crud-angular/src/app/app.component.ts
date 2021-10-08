@@ -6,5 +6,14 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app-crud-angular';
+  title = 'CRUD Shippers';
+
+  mostrar = true;
+  frase: any = {
+    mensaje: 'El Doc esta vivo!',
+
+    autor: 'marty'
+  }
+
+  personajes: string[] = ['Marty', 'Doc', 'Biff'];
 }
