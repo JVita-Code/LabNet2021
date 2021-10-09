@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ShipperDto } from '../../models/ShipperDto';
+
+import { DbConnectionService } from '../../services/db-connection.service';
 
 @Component({
   selector: 'app-shippers-list',
@@ -7,9 +10,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ShippersListComponent implements OnInit {
 
-  constructor() { }
+  public listShippers: Array<ShipperDto> = [];
+  constructor(private apiService: DbConnectionService) { }
 
   ngOnInit(): void {
+
+    // this.initForm();
+    this.obtenerShippers();
+  }
+
+  obtenerShippers(){
+    this.apiService.getShippers().subscribe(res => {
+      this.listShippers = res;
+      console.log(this.listShippers);
+
+    });
   }
 
 }

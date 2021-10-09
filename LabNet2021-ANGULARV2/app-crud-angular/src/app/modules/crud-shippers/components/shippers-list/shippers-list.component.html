@@ -1,32 +1,17 @@
 <table class="table">
-    <thead>
-      <tr>
-        <th scope="col">ShipperID</th>
-        <th scope="col">Company Name</th>
-        <th scope="col">Phone</th>
-        
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row">..</th>
-        <td>.</td>
-        <td>.</td>
-        <td>.</td>
-      </tr>
-      <tr>
-        <th scope="row">..</th>
-        <td>.</td>
-        <td>.</td>
-        <td>.</td>
-      </tr>
-      <tr>
-        <th scope="row">..</th>
-        <td>.</td>
-        <td>.</td>
-        <td>.</td>
-      </tr>
-    </tbody>
-  </table>
+  <thead>
+    <tr>
+      <th scope="col">ShipperID</th>
+      <th scope="col">Company Name</th>
+      <th scope="col">Phone</th>
 
-  
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let shipper of listShippers">
+      <th scope="row">{{shipper.ShipperID}}</th>
+      <td>{{shipper.CompanyName}}</td>
+      <td>{{shipper.Phone}}</td>
+    </tr>
+  </tbody>
+</table>

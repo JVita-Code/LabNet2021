@@ -15,9 +15,11 @@ namespace LabNet2021.Tp8.API
             config.EnableCors();
 
 
-            var settings = config.Formatters.JsonFormatter.SerializerSettings;
-            settings.ContractResolver = new CamelCasePropertyNamesContractResolver();
-            settings.Formatting = Newtonsoft.Json.Formatting.Indented;
+            // ----------- Formateador para devolver JSON en CamelCase -------------------
+
+            //var settings = config.Formatters.JsonFormatter.SerializerSettings;
+            //settings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+            //settings.Formatting = Newtonsoft.Json.Formatting.Indented;
 
             // Web API routes
             config.MapHttpAttributeRoutes();

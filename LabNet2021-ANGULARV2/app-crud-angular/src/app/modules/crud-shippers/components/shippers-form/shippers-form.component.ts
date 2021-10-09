@@ -39,7 +39,7 @@ guardarForm(){
   
   this.apiService.insertShipper(shipper).subscribe(res => {
     this.form.reset();
-    console.log('Se insertó correctamente el nuevo Shipper')
+    console.log('se insertó el nuevo shipper')
 
   })
 }

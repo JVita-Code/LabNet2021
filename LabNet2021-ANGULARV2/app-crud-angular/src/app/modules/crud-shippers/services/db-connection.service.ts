@@ -27,9 +27,6 @@ export class DbConnectionService {
 
   public getShippers(): Observable<Array<ShipperDto>> {
 
-
-    
-
     let url = environment.apiShippers + this.endpoint;
     return this.http.get<Array<ShipperDto>>(url);
 
