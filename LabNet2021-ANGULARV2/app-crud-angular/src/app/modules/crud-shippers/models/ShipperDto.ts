@@ -1,6 +1,6 @@
 export class ShipperDto
 {
-    ShipperID? : number;
-    CompanyName! : string;
-    Phone! : string;
+    shipperID? : number;
+    companyName! : string;
+    phone! : string;
 }

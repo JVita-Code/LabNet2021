@@ -33,8 +33,8 @@ guardarForm(){
   var shipper = new ShipperDto();
 
   // shipper.ShipperID = this.form.get('ShipperID')?.value;
-  shipper.CompanyName = this.form.get('companyName')?.value;
-  shipper.Phone = this.form.get('phone')?.value; 
+  shipper.companyName = this.form.get('companyName')?.value;
+  shipper.phone = this.form.get('phone')?.value; 
 
   
   this.apiService.insertShipper(shipper).subscribe(res => {
