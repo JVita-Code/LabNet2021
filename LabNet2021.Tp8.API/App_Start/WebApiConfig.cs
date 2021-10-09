@@ -10,7 +10,10 @@ namespace LabNet2021.Tp8.API
     {
         public static void Register(HttpConfiguration config)
         {
-            // Web API configuration and services
+            // Web API configuration and services            
+
+            config.EnableCors();
+
 
             var settings = config.Formatters.JsonFormatter.SerializerSettings;
             settings.ContractResolver = new CamelCasePropertyNamesContractResolver();
