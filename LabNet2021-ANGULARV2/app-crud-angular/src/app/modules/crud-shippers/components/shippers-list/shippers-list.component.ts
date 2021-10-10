@@ -14,7 +14,7 @@ export class ShippersListComponent implements OnInit {
   public listShippers: Array<ShipperDto> = [];
 
   selectedShipper?: ShipperDto;
-  shippers = ShipperDto; // AGREGADO HACE POCO
+  // shippers = ShipperDto; // AGREGADO HACE POCO
 
 
   constructor(private apiService: DbConnectionService, public router: Router) { }
@@ -39,7 +39,10 @@ export class ShippersListComponent implements OnInit {
     this.selectedShipper = shipper;
   }
 
-
+  deleteShipper(id: any): void {    
+    
+    this.apiService.deleteShipper(id).subscribe();
+  }
 
 
   onDelete(){

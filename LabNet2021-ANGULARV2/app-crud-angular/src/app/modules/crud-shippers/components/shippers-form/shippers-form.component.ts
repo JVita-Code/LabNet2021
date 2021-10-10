@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { ShipperDto } from '../../models/ShipperDto';
 import { DbConnectionService } from '../../services/db-connection.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-shippers-form',
@@ -12,7 +13,11 @@ export class ShippersFormComponent implements OnInit {
 
   form!: FormGroup;
 
-  constructor(private readonly fb: FormBuilder, private apiService: DbConnectionService  ) { }
+  @Input() shippers?: ShipperDto;
+  
+  
+
+  constructor(private readonly fb: FormBuilder, private apiService: DbConnectionService, public router: Router) { }
 
   ngOnInit(): void {
     this.form = this.fb.group({
@@ -43,10 +48,12 @@ guardarForm(){
 
   
   this.apiService.insertShipper(shipper).subscribe(res => {
-    this.form.reset();
-    console.log('se insertó el nuevo shipper')
+     this.form.reset();
+     console.log('se insertó el nuevo shipper')
 
-  })
+   })
+
+
 }
 
 }

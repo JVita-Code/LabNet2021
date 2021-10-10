@@ -19,15 +19,29 @@
   </tbody>
 </table> -->
 
+<button type="button" class="btn btn-primary" (click)="router.navigate(['/form']);">Insert</button>
 <ul class="shippers">
-  <li *ngFor="let shipper of listShippers"
-    [class.selected]="shipper === selectedShipper"
-    (click)="onSelect(shipper)">
+  <li *ngFor="let shipper of listShippers" [class.selected]="shipper === selectedShipper" (click)="onSelect(shipper)">
     <span class="badge">{{shipper.shipperID}}</span> {{shipper.companyName}}
+    <button class="button btn-danger" title="delete shipper" (click)="deleteShipper(shipper.shipperID)">X</button>      
   </li>
+  
 </ul>
 
 <app-shipper-detail [shippers]="selectedShipper"></app-shipper-detail>
+<app-shippers-form [shippers]="selectedShipper"></app-shippers-form>
+
+
+
+
+
+
+
+
+
+
+
+
 
 <!-- <div *ngIf="selectedShipper">
 

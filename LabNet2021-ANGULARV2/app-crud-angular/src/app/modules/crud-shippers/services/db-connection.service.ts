@@ -15,22 +15,20 @@ export class DbConnectionService {
 
   constructor(private http: HttpClient) { }
 
-  // getShippers(): Observable<Any>{
-  //   // return this.http.get(environment)
-  // }
+  public getShippers(): Observable<Array<ShipperDto>> {
+
+    let url = environment.apiShippers + this.endpoint;
+    return this.http.get<Array<ShipperDto>>(url);
+  }
 
   public insertShipper(shipperRequest: ShipperDto): Observable<any> {
 
     let url = environment.apiShippers + this.endpoint;
     return this.http.post(url, shipperRequest);
+  }  
+
+  public deleteShipper(id: any): Observable<any> {    
+    return this.http.delete(environment.apiShippers + this.endpoint + "/" + id);
   }
-
-  public getShippers(): Observable<Array<ShipperDto>> {
-
-    let url = environment.apiShippers + this.endpoint;
-    return this.http.get<Array<ShipperDto>>(url);
-
-  }
-
-
+  
 }
