@@ -3,6 +3,7 @@ import { ShipperDto } from '../../models/ShipperDto';
 import { Router } from '@angular/router';
 
 import { DbConnectionService } from '../../services/db-connection.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-shippers-list',
@@ -17,7 +18,7 @@ export class ShippersListComponent implements OnInit {
   // shippers = ShipperDto; // AGREGADO HACE POCO
 
 
-  constructor(private apiService: DbConnectionService, public router: Router) { }
+  constructor(private apiService: DbConnectionService, public router: Router, private toastr: ToastrService) { }
 
   ngOnInit(): void {
 
@@ -42,6 +43,7 @@ export class ShippersListComponent implements OnInit {
   deleteShipper(id: any): void {    
     
     this.apiService.deleteShipper(id).subscribe();
+    this.toastr.success('Se ha eliminado el Shipper')
   }
 
 

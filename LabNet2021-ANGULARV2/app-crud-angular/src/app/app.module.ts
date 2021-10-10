@@ -17,6 +17,7 @@ import { ShipperDetailComponent } from './modules/crud-shippers/components/shipp
   declarations: [
     AppComponent,
     
+    
     // ErrorPageComponent
   ],
   imports: [

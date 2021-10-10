@@ -3,9 +3,11 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { HttpClientModule } from '@angular/common/http';
+import { ToastrModule } from 'ngx-toastr';
+
 import { ShippersListComponent } from './components/shippers-list/shippers-list.component';
 import { ShippersFormComponent } from './components/shippers-form/shippers-form.component';
-import { HttpClientModule } from '@angular/common/http';
 import { ShipperDetailComponent } from './components/shipper-detail/shipper-detail.component';
 
 
@@ -26,7 +28,8 @@ import { ShipperDetailComponent } from './components/shipper-detail/shipper-deta
     ReactiveFormsModule,
     FormsModule,
     BrowserAnimationsModule,
-    HttpClientModule
+    HttpClientModule,
+    ToastrModule.forRoot()
     
   ]
 })

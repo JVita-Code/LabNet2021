@@ -4,6 +4,8 @@ import { ShipperDto } from '../../models/ShipperDto';
 import { DbConnectionService } from '../../services/db-connection.service';
 import { Router } from '@angular/router';
 
+import { ToastrService } from 'ngx-toastr';
+
 @Component({
   selector: 'app-shippers-form',
   templateUrl: './shippers-form.component.html',
@@ -17,7 +19,7 @@ export class ShippersFormComponent implements OnInit {
   
   
 
-  constructor(private readonly fb: FormBuilder, private apiService: DbConnectionService, public router: Router) { }
+  constructor(private readonly fb: FormBuilder, private apiService: DbConnectionService, public router: Router, private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.form = this.fb.group({
@@ -49,7 +51,7 @@ guardarForm(){
   
   this.apiService.insertShipper(shipper).subscribe(res => {
      this.form.reset();
-     console.log('se insertó el nuevo shipper')
+     this.toastr.success('Operación exitosa')
 
    })
 
