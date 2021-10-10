@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ShipperDto } from '../../models/ShipperDto';
+import { Router } from '@angular/router';
 
 import { DbConnectionService } from '../../services/db-connection.service';
 
@@ -11,7 +12,12 @@ import { DbConnectionService } from '../../services/db-connection.service';
 export class ShippersListComponent implements OnInit {
 
   public listShippers: Array<ShipperDto> = [];
-  constructor(private apiService: DbConnectionService) { }
+
+  selectedShipper?: ShipperDto;
+  shippers = ShipperDto; // AGREGADO HACE POCO
+
+
+  constructor(private apiService: DbConnectionService, public router: Router) { }
 
   ngOnInit(): void {
 
@@ -26,5 +32,18 @@ export class ShippersListComponent implements OnInit {
 
     });
   }
+
+
+  onSelect(shipper: ShipperDto): void {
+
+    this.selectedShipper = shipper;
+  }
+
+
+
+
+  onDelete(){
+    //  this.listShippers.
+   }
 
 }

@@ -6,6 +6,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ShippersListComponent } from './components/shippers-list/shippers-list.component';
 import { ShippersFormComponent } from './components/shippers-form/shippers-form.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ShipperDetailComponent } from './components/shipper-detail/shipper-detail.component';
 
 
 
@@ -16,7 +17,8 @@ import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     ShippersListComponent,
-    ShippersFormComponent
+    ShippersFormComponent,
+    ShipperDetailComponent
   ],
   imports: [
 

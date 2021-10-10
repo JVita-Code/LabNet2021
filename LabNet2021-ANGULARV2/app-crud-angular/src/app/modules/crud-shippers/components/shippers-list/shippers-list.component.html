@@ -1,4 +1,4 @@
-<table class="table">
+<!-- <table class="table">
   <thead>
     <tr>
       <th scope="col">ShipperID</th>
@@ -8,10 +8,38 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let shipper of listShippers">
+    <tr *ngFor="let shipper of listShippers" (click)="onSelect(shipper)">
       <th scope="row">{{shipper.shipperID}}</th>
       <td>{{shipper.companyName}}</td>
       <td>{{shipper.phone}}</td>
+      <td><button type="button" class="btn btn-info">Update</button></td>
     </tr>
+    <button type="button" class="btn btn-danger" (click)="onDelete() ">Delete</button>
+    <button type="button" class="btn btn-primary" (click)="router.navigate(['/form']);">Insert</button>
   </tbody>
-</table>
+</table> -->
+
+<ul class="shippers">
+  <li *ngFor="let shipper of listShippers"
+    [class.selected]="shipper === selectedShipper"
+    (click)="onSelect(shipper)">
+    <span class="badge">{{shipper.shipperID}}</span> {{shipper.companyName}}
+  </li>
+</ul>
+
+<app-shipper-detail [shippers]="selectedShipper"></app-shipper-detail>
+
+<!-- <div *ngIf="selectedShipper">
+
+  <h2>{{selectedShipper.companyName | uppercase}} Info</h2>
+  <div><span>id: </span>{{ selectedShipper.shipperID }}</div>
+  <div>
+    <label for="shipper-name">Company Name: </label>
+    <input id="shipper-name" [(ngModel)]="selectedShipper.companyName" placeholder="Company Name"> <br><br>
+    <label for="shipper-name">Company Phone: </label>
+    <input id="shipper-phone" [(ngModel)]="selectedShipper.phone" placeholder="Phone">
+  </div>
+
+</div> -->
+
+

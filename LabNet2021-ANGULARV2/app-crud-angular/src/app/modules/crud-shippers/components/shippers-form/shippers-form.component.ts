@@ -23,6 +23,11 @@ export class ShippersFormComponent implements OnInit {
     })
   }
 
+  onSubmit(): void {
+    
+    console.log(this.form.value);
+  }
+
 volverForm(){
 
   this.form.reset();

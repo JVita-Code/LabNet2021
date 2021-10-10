@@ -4,14 +4,28 @@ import { ShippersFormComponent } from './modules/crud-shippers/components/shippe
 import { ShippersListComponent } from './modules/crud-shippers/components/shippers-list/shippers-list.component';
 
 const routes: Routes = [
-  {path: '',
-  component: ShippersListComponent},
-  {path: 'form',
-  component: ShippersFormComponent}
+  
+  // {
+  //   path: '**',
+  //   component: ErrorPageComponent
+  // }
+  
+  {
+    path: '',
+    component: ShippersListComponent
+  },  
+  {
+    path: 'form',
+    component: ShippersFormComponent
+  }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  imports: [
+    RouterModule.forRoot(routes)
+  ],
+  exports: [
+    RouterModule
+  ]
 })
 export class AppRoutingModule { }

@@ -1,0 +1,12 @@
+<div *ngIf="shippers">
+
+  <h2>{{shippers.companyName | uppercase}} Info</h2>
+  <div><span>id: </span>{{ shippers.shipperID }}</div>
+  <div>
+    <label for="shipper-name">Company Name: </label>
+    <input id="shipper-name" [(ngModel)]="shippers.companyName" placeholder="Company Name"> <br><br>
+    <label for="shipper-name">Company Phone: </label>
+    <input id="shipper-phone" [(ngModel)]="shippers.phone" placeholder="Phone">
+  </div>
+
+</div>
