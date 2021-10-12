@@ -60,6 +60,7 @@ namespace LabNet2021.Tp4.EF.Logic
         {
             try
             {
+
                 var shipper = context.Shippers.Where(s => s.ShipperID == id).FirstOrDefault();
                 return shipper;
             }
@@ -98,6 +99,29 @@ namespace LabNet2021.Tp4.EF.Logic
                 context.SaveChanges();
             }
 
+        }
+
+        public void Update2(int id, Shipper updatedShipper)
+        {
+
+            try
+            {
+                var shipperToUpdate = context.Shippers.Find(id);
+
+                {
+                    shipperToUpdate.CompanyName = updatedShipper.CompanyName;
+                    shipperToUpdate.Phone = updatedShipper.Phone;
+
+                    context.SaveChanges();
+                }
+            }
+
+            catch (Exception e)
+            {
+                throw e;
+            }
+
+            
         }
     }
 }

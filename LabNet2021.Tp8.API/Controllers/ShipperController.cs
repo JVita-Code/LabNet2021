@@ -63,26 +63,54 @@ namespace LabNet2021.Tp8.API.Controllers
             }
         }
 
-        [HttpPut]
-        public IHttpActionResult Update(ShipperDto shipperAPI)
-        {
+        //[HttpPut]
+        //public IHttpActionResult Update(ShipperDto shipperAPI)
+        //{
             
+        //    try
+        //    {
+        //        Shipper shipper = new Shipper()
+        //        {
+        //            ShipperID = shipperAPI.ShipperID,
+        //            CompanyName = shipperAPI.CompanyName,
+        //            Phone = shipperAPI.Phone,
+        //        };
+        //        shipperlogic.Update(shipper);
+                
+        //        return Ok("El shipper fue modificado.");
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return BadRequest("Error: verifique los datos.");
+        //    }
+        //}
+
+
+        [HttpPut]
+        public IHttpActionResult Update2(int id, ShipperDto updatedShipper)
+        {
             try
             {
+                var shipperEncontrado = shipperlogic.GetShipper(id);
+
+                if(shipperEncontrado == null)
+                {
+                    return NotFound();
+                }
+
                 Shipper shipper = new Shipper()
                 {
-                    ShipperID = shipperAPI.ShipperID,
-                    CompanyName = shipperAPI.CompanyName,
-                    Phone = shipperAPI.Phone,
+                    CompanyName = updatedShipper.CompanyName,
+                    Phone = updatedShipper.Phone,
                 };
-                shipperlogic.Update(shipper);
-                
-                return Ok("El shipper fue modificado.");
+
+                shipperlogic.Update2(id, shipper);  
+                return Ok("El shipper fue modificado");  
             }
             catch (Exception ex)
             {
                 return BadRequest("Error: verifique los datos.");
-            }
+            }            
         }
     }
 }
