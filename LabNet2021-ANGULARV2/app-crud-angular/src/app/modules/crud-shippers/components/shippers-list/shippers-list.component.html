@@ -1,4 +1,6 @@
-<!-- <table class="table">
+
+<button type="button" class="btn btn-primary" (click)="router.navigate(['/form']);">Insert</button>
+<table class="table">
   <thead>
     <tr>
       <th scope="col">ShipperID</th>
@@ -12,48 +14,37 @@
       <th scope="row">{{shipper.shipperID}}</th>
       <td>{{shipper.companyName}}</td>
       <td>{{shipper.phone}}</td>
-      <td><button type="button" class="btn btn-info">Update</button></td>
-    </tr>
-    <button type="button" class="btn btn-danger" (click)="onDelete() ">Delete</button>
-    <button type="button" class="btn btn-primary" (click)="router.navigate(['/form']);">Insert</button>
-  </tbody>
-</table> -->
 
-<button type="button" class="btn btn-primary" (click)="router.navigate(['/form']);">Insert</button>
+        <td><button type="button" class="btn btn-info">Update</button></td> 
+        <td><button type="button" class="btn btn-danger" (click)="deleteShipper(shipper)">Delete</button></td>
+    </tr>
+    <!-- <button type="button" class="btn btn-danger" (click)="onDelete() ">Delete</button> -->
+    <!-- <button type="button" class="btn btn-primary" (click)="router.navigate(['/form']);">Insert</button> -->
+  </tbody>
+</table>
+
+
+<!-- <button type="button" class="btn btn-primary" (click)="router.navigate(['/form']);">Insert</button>
 <ul class="shippers">
-  <li *ngFor="let shipper of listShippers" [class.selected]="shipper === selectedShipper" (click)="onSelect(shipper)">
+  <li *ngFor="let shipper of listShippers" [class.selected]="shipper === selectedShipper" (click)="onSelect(shipper)" [value]="shipper.shipperID" >
     <span class="badge">{{shipper.shipperID}}</span> {{shipper.companyName}}
-    <button class="button btn-danger" title="delete shipper" (click)="deleteShipper(shipper.shipperID)">X</button>      
+    <button class="delete" title="delete shipper" (click)="deleteShipper(shipper.shipperID)">X</button>      
   </li>
   
-</ul>
+</ul> -->
+
+
 
 <app-shipper-detail [shippers]="selectedShipper"></app-shipper-detail>
-<app-shippers-form [shippers]="selectedShipper"></app-shippers-form>
+
+<app-shippers-form [seleccionShipper]="selectedShipper"></app-shippers-form>
+
+<!-- <app-shippers-form [shippers]="selectedShipper" (messageEvent)="receiveMessage($event)"></app-shippers-form> -->
 
 
+<!--  para el shipper form [callBackFunction]="myCallbackFunction" -->
 
 
+<!-- para el button update (click)="onEdit(shipper)" -->
 
-
-
-
-
-
-
-
-
-<!-- <div *ngIf="selectedShipper">
-
-  <h2>{{selectedShipper.companyName | uppercase}} Info</h2>
-  <div><span>id: </span>{{ selectedShipper.shipperID }}</div>
-  <div>
-    <label for="shipper-name">Company Name: </label>
-    <input id="shipper-name" [(ngModel)]="selectedShipper.companyName" placeholder="Company Name"> <br><br>
-    <label for="shipper-name">Company Phone: </label>
-    <input id="shipper-phone" [(ngModel)]="selectedShipper.phone" placeholder="Phone">
-  </div>
-
-</div> -->
-
-
+<!-- (click)="onEdit(selectedShipper)" -->

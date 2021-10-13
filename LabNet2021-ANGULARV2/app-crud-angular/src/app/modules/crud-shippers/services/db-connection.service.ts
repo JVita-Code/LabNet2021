@@ -4,7 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Observable, throwError } from 'rxjs';
 import { ShipperDto } from '../models/ShipperDto';
-import { catchError, retry } from 'rxjs/operators';
+
 
 import { map } from 'rxjs/operators'
 
@@ -13,11 +13,10 @@ import { map } from 'rxjs/operators'
 })
 export class DbConnectionService {
 
-  httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-  };
+  // httpOptions = {
+  // headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  // };
 
-  
   endpoint: string = 'shipper'
   url = environment.apiShippers + this.endpoint;
 
@@ -33,31 +32,25 @@ export class DbConnectionService {
     return this.http.get<ShipperDto>(this.url + `/${id}`)
   }
 
-  public insertShipper(shipperRequest: ShipperDto): Observable<any> {
-
-    
-    return this.http.post(this.url, shipperRequest);
-  }  
+  public insertShipper(data: any){
+  
+     return this.http.post(this.url, data)
+     .pipe(map((res: any)=>{
+       return res;
+     }));
+  } 
 
   public deleteShipper(id: number): Observable<any> {    
    
     return this.http.delete(this.url + "/" + id);
   }
 
-  public updateShipper(shipper: ShipperDto, id: number): Observable<any> {
+  public updateShipper(data: any, id: number): Observable<any> {
     
-  return this.http.put(this.url + "/" + id, shipper)
-  .pipe(map((res:any)=> {
-    return res;
-  }))
-
-  // return this.http.put(this.url + "/" + shipper.shipperID)
-
-  // let url = environment.apiShippers + this.endpoint;
-  // return this.http.put(environment.apiShippers + this.endpoint + "/" + id, this.httpOptions)
-  // // }
-
-  
-
+    return this.http.put<any>(this.url + "/" + id, data)
+    .pipe(map((res:any)=> {
+      return res;
+    }))
 }
+
 }

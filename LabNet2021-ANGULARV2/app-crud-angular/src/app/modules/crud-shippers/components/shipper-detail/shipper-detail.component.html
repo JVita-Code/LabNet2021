@@ -1,8 +1,13 @@
 <div *ngIf="shippers">
 
   <h2>{{shippers.companyName | uppercase}} Info</h2>
-  <div><span>id: </span>{{ shippers.shipperID }}</div>
+  <!-- <div><span>id: </span>{{ shippers.shipperID }}</div> -->
+  
   <div>
+
+    <label for="shipper-id">Shipper ID: </label>
+    <input id="shipper-id" [(ngModel)]="shippers.shipperID" placeholder="Shipper ID" disabled> <br><br>
+
     <label for="shipper-name">Company Name: </label>
     <input id="shipper-name" [(ngModel)]="shippers.companyName" placeholder="Company Name" disabled> <br><br>
     <label for="shipper-name">Company Phone: </label>
@@ -10,5 +15,8 @@
     
   </div>
 
+
 </div>
 
+<!-- 
+probar de reemplazar el div span por input -->

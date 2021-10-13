@@ -9,6 +9,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { ShippersListComponent } from './components/shippers-list/shippers-list.component';
 import { ShippersFormComponent } from './components/shippers-form/shippers-form.component';
 import { ShipperDetailComponent } from './components/shipper-detail/shipper-detail.component';
+import { ListFormComponent } from './components/ListForm/ListForm.component';
 
 
 
@@ -20,7 +21,8 @@ import { ShipperDetailComponent } from './components/shipper-detail/shipper-deta
   declarations: [
     ShippersListComponent,
     ShippersFormComponent,
-    ShipperDetailComponent
+    ShipperDetailComponent,
+    ListFormComponent
   ],
   imports: [
 

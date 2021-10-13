@@ -14,7 +14,16 @@ export class ShippersListComponent implements OnInit {
 
   public listShippers: Array<ShipperDto> = [];
 
-  selectedShipper?: ShipperDto;
+  selectedShipper: ShipperDto;
+
+  message?: string;
+
+  receiveMessage($event: any){
+    this.message = $event
+  }
+
+
+  public shipperEncontrado?: ShipperDto;
   // shippers = ShipperDto; // AGREGADO HACE POCO
 
 
@@ -33,22 +42,31 @@ export class ShippersListComponent implements OnInit {
 
     });
   }
-
+  
 
   onSelect(shipper: ShipperDto): void {
 
     this.selectedShipper = shipper;
   }
 
-  deleteShipper(id: any): void {    
+  deleteShipper(shipper: any): void {    
     
-    this.apiService.deleteShipper(id).subscribe();
-    this.toastr.success('Se ha eliminado el Shipper')
+    // this.listShippers = this.listShippers.filter(s => s !== shipper);
+    this.apiService.deleteShipper(shipper.shipperID)
+    .subscribe(res => {
+      alert("shipper eliminado")
+      this.obtenerShippers();
+    })
+
+    // this.toastr.success('Se ha eliminado el Shipper')
   }
 
-
-  onDelete(){
-    //  this.listShippers.
-   }
+  findShipper(id: number){
+    this.apiService.getShipper(id).subscribe(ship => {
+    this.shipperEncontrado = ship;
+    console.log(this.shipperEncontrado);
+    },
+    error => console.log(error))
+  }
 
 }

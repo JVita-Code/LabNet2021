@@ -2,11 +2,13 @@ import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { ModalModule, BsModalRef } from 'ngx-bootstrap/modal';
 
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 import { CrudShippersModule } from './modules/crud-shippers/crud-shippers.module';
 import { ShipperDetailComponent } from './modules/crud-shippers/components/shipper-detail/shipper-detail.component';
@@ -15,8 +17,7 @@ import { ShipperDetailComponent } from './modules/crud-shippers/components/shipp
 
 @NgModule({
   declarations: [
-    AppComponent,
-    
+    AppComponent
     
     // ErrorPageComponent
   ],
@@ -26,12 +27,11 @@ import { ShipperDetailComponent } from './modules/crud-shippers/components/shipp
     AppRoutingModule,
     BrowserAnimationsModule,
     CrudShippersModule,
-    HttpClientModule
-    
-    
+    HttpClientModule,
+    ModalModule.forRoot()
     
   ],
-  providers: [],
+  providers: [BsModalRef],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
