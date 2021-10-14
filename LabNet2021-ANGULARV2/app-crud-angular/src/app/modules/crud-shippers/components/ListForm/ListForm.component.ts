@@ -7,7 +7,7 @@ import { ShipperDto } from '../../models/ShipperDto';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 
-import { FormBuilder, FormGroup  } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators  } from '@angular/forms';
 
 @Component({
   selector: 'app-ListForm',
@@ -27,7 +27,13 @@ export class ListFormComponent implements OnInit {
 
   openModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template,{ backdrop: 'static', keyboard: false });
-}
+  }
+
+  campoNotValid(campo: string){
+    
+    return this.formValue.controls[campo].errors 
+        && this.formValue.controls[campo].touched;
+  }
 
   public listShippers: Array<ShipperDto> = [];
 
@@ -36,8 +42,8 @@ export class ListFormComponent implements OnInit {
     this.obtenerShippers();
 
     this.formValue = this.fb.group({
-      companyName : [''],
-      phone : ['']
+      companyName : ['', [Validators.required, Validators.maxLength(40)]],
+      phone : ['', [Validators.required, Validators.maxLength(20)]]
     })
   }
 
@@ -50,6 +56,11 @@ export class ListFormComponent implements OnInit {
   }
 
   insertShipperDetails(){
+
+    if(this.formValue.invalid){
+      this.formValue.markAllAsTouched();
+      return;
+    }
     this.shipperObj.companyName = this.formValue.value.companyName;
     this.shipperObj.phone = this.formValue.value.phone;
 
@@ -85,14 +96,19 @@ export class ListFormComponent implements OnInit {
   }
 
   updateShipperDetails(){
+
+    if(this.formValue.invalid){
+      this.formValue.markAllAsTouched();
+      return;
+    }
+
     this.shipperObj.companyName = this.formValue.value.companyName;
     this.shipperObj.phone = this.formValue.value.phone;
 
     this.apiService.updateShipper(this.shipperObj, this.shipperObj.shipperID)
     .subscribe( res =>{
       alert('Updated shipper');
-      this
-      this.formValue.reset();
+      
       this.obtenerShippers();     
 
     })

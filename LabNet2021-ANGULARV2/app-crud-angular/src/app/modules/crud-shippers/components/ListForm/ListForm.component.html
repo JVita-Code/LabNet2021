@@ -9,15 +9,23 @@
     </div>
     <div class="modal-body">
       
-      <form [formGroup]="formValue">
+      <form [formGroup]="formValue" #formulario>
 
         <div class="form-group">
             <label class="col-form-label">Company Name</label>
-            <input formControlName="companyName" type="text" class="form-control">
+            <input formControlName="companyName" type="text" class="form-control" >
+            <span class="form-text text-danger"
+                  *ngIf="campoNotValid('companyName')">
+              El Company Name no puede quedar en blanco ni tener más de 40 letras.
+            </span>
         </div>
         <div class="form-group">
             <label class="col-form-label">Phone</label>
-            <input formControlName="phone" type="text" class="form-control">
+            <input formControlName="phone" type="text" class="form-control" >
+            <span class="form-text text-danger"
+                  *ngIf="campoNotValid('phone')">
+              El Phone no puede quedar en blanco ni tener más de 24 numeros.
+            </span>
         </div>
         <br>
         <button type="submit" class="btn btn-primary" (click)="modalRef.hide()">Back</button>
