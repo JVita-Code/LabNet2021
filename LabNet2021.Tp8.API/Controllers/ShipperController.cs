@@ -59,7 +59,7 @@ namespace LabNet2021.Tp8.API.Controllers
             }
             catch (Exception ex)
             {
-                return BadRequest("Error: verifique los datos");
+                return NotFound();
             }
         }
 

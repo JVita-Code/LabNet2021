@@ -1,11 +1,16 @@
-<button type="button" class="btn btn-primary" (click)="openModal(template)" (click)="clickBtnAdd()">Add Shipper</button>
+<nav class="navbar navbar-light bg-dark">
+  <div class="container-fluid">
+      <h1>Shippers List | Editor</h1>
+      <div class="d-flex">
+        <button type="button" class="btn btn-warning" (click)="openModal(template)" (click)="clickBtnAdd()">Add Shipper</button>
+      </div>
+  </div>
+</nav>
 
 <ng-template #template>
     <div class="modal-header">
         <h4 class="modal-title pull-left">Shipper Form</h4>
-        <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
-            <span aria-hidden="true">&times;</span>
-        </button>
+        <button type="button" class="btn-close"  aria-label="Close" (click)="modalRef.hide()"></button>
     </div>
     <div class="modal-body">
       
@@ -16,15 +21,17 @@
             <input formControlName="companyName" type="text" class="form-control" >
             <span class="form-text text-danger"
                   *ngIf="campoNotValid('companyName')">
-              El Company Name no puede quedar en blanco ni tener más de 40 letras.
+                  <br>
+              El Company Name no puede tener menos de 3 letras o tener más de 40 letras.
             </span>
         </div>
         <div class="form-group">
-            <label class="col-form-label">Phone</label>
+            <label class="col-form-label" placeholder="(000)-000-0000">Phone</label>
             <input formControlName="phone" type="text" class="form-control" >
             <span class="form-text text-danger"
                   *ngIf="campoNotValid('phone')">
-              El Phone no puede quedar en blanco ni tener más de 24 numeros.
+                  <br>
+              El Phone no puede tener menos de 10 números o tener más de 24 numeros.
             </span>
         </div>
         <br>
@@ -38,7 +45,7 @@
 
 </ng-template>
 
-<table class="table mt-3"> 
+<table class="table mt-1"> 
   <thead>
     <tr>
       <th scope="col">Shipper ID</th>

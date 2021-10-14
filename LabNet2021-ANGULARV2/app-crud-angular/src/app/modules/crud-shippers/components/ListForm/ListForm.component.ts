@@ -1,4 +1,5 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
+import { FormBuilder, FormGroup, Validators  } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { DbConnectionService } from '../../services/db-connection.service';
 
@@ -7,7 +8,8 @@ import { ShipperDto } from '../../models/ShipperDto';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 
-import { FormBuilder, FormGroup, Validators  } from '@angular/forms';
+
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-ListForm',
@@ -23,7 +25,7 @@ export class ListFormComponent implements OnInit {
   mostrarAdd!: boolean;
   mostrarUpdate!: boolean;
 
-  constructor(private httpclient: HttpClient, private apiService: DbConnectionService, private modalService: BsModalService, private fb: FormBuilder) { }
+  constructor(private httpclient: HttpClient, private apiService: DbConnectionService, private modalService: BsModalService, private fb: FormBuilder, private toastrService: ToastrService) { }
 
   openModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template,{ backdrop: 'static', keyboard: false });
@@ -42,16 +44,19 @@ export class ListFormComponent implements OnInit {
     this.obtenerShippers();
 
     this.formValue = this.fb.group({
-      companyName : ['', [Validators.required, Validators.maxLength(40)]],
-      phone : ['', [Validators.required, Validators.maxLength(20)]]
+      companyName : ['', [Validators.required, Validators.minLength(3), Validators.maxLength(40)]],
+      phone : ['', [Validators.required, Validators.minLength(10), Validators.maxLength(20)]]
     })
   }
 
   obtenerShippers(){
     this.apiService.getShippers().subscribe(res => {
+      
       this.listShippers = res;
-      console.log(this.listShippers);
 
+    },
+    err => {
+      this.toastrService.error('Error al obtener listado de Shippers' + err.error.errors)
     });
   }
 
@@ -61,28 +66,32 @@ export class ListFormComponent implements OnInit {
       this.formValue.markAllAsTouched();
       return;
     }
+
     this.shipperObj.companyName = this.formValue.value.companyName;
     this.shipperObj.phone = this.formValue.value.phone;
 
     this.apiService.insertShipper(this.shipperObj)
     .subscribe(res =>{
       
-      alert("Shipper añadido");
       this.formValue.reset();
+      this.toastrService.success('Se cargó correctamente el Shipper')
       this.obtenerShippers();
 
     },
-    error => {
-      alert("Error")
-    })
+    err => {
+      this.toastrService.error('Error al cargar el Shipper' + err.error.errors)
+    });
   }
 
   deleteShipper(shipper: any){
     this.apiService.deleteShipper(shipper.shipperID)
     .subscribe(res =>{
-      alert("Shipper Deleted");
+      this.toastrService.success('Se eliminó correctamente el Shipper')
       this.obtenerShippers();
-    })
+    },
+    err => {
+      this.toastrService.error('Error al intentar eliminar el Shipper' + err.error.errors)
+    });
   }
 
   onEdit(shipper: any){
@@ -107,11 +116,13 @@ export class ListFormComponent implements OnInit {
 
     this.apiService.updateShipper(this.shipperObj, this.shipperObj.shipperID)
     .subscribe( res =>{
-      alert('Updated shipper');
-      
+      this.toastrService.success('Se actualizaron correctamente los datos')     
       this.obtenerShippers();     
 
-    })
+    },
+    err =>{
+      this.toastrService.error('Error al intentar actualizar los datos' + err.error.errors)
+    });
   }
 
   clickBtnAdd(){
@@ -119,8 +130,6 @@ export class ListFormComponent implements OnInit {
     this.mostrarAdd = true;
     this.mostrarUpdate = false;
   }
-
-
 
 }
 
