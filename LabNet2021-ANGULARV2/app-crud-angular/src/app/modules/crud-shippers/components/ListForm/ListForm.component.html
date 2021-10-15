@@ -9,7 +9,7 @@
 
 <ng-template #template>
     <div class="modal-header">
-        <h4 class="modal-title pull-left">Shipper Form</h4>
+        <h4 class="modal-title pull-left"><strong>Shipper Form</strong></h4>
         <button type="button" class="btn-close"  aria-label="Close" (click)="modalRef.hide()"></button>
     </div>
     <div class="modal-body">
@@ -39,8 +39,7 @@
         <button type="submit" *ngIf="mostrarAdd" class="btn btn-danger mx-1" (click)="insertShipperDetails()">Add</button>
         <button type="submit" *ngIf="mostrarUpdate" class="btn btn-danger mx-1" (click)="updateShipperDetails()" [disabled]="formValue.pristine">Save</button>
         
-    </form> 
-      
+    </form>       
     </div>
 
 </ng-template>
@@ -56,19 +55,17 @@
   </thead>
   
     <tbody>
-
       <h2 *ngIf="isLoading">Loading...</h2>
-      <tr *ngFor="let shipper of listShippers let i = index">
+      <tr *ngFor="let shipper of listShippers">
         
         <th scope="row">{{shipper.shipperID}}</th>
         <td>{{shipper.companyName}}</td>
         <td>{{shipper.phone}}</td>
   
-          <td>            
+        <td>            
             <button (click)="onEdit(shipper)" type="button" type="button" class="btn btn-success" (click)="openModal(template)">Update</button>
             <button type="button" class="btn btn-danger mx-3" (click)="deleteShipper(shipper)">Delete</button>
-          </td>
+        </td>
       </tr>      
     </tbody>
-
 </table>
