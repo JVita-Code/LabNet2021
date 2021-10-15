@@ -10,7 +10,9 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let shipper of listShippers" (click)="onSelect(shipper)">
+    <tr *ngFor="let shipper of listShippers; let i = index" 
+        (click)="onSelect(shipper)"
+        (click)="onEditItem(i)">
       <th scope="row">{{shipper.shipperID}}</th>
       <td>{{shipper.companyName}}</td>
       <td>{{shipper.phone}}</td>

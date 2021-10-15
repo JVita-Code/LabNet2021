@@ -5,6 +5,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Cors;
 
@@ -19,16 +21,23 @@ namespace LabNet2021.Tp8.API.Controllers
         ShipperLogic shipperlogic = new ShipperLogic();
 
         [HttpGet]
-        public List<ShipperDto> GetShippers()
+        public IHttpActionResult Get()
         {
-
-                List<ShipperDto> shipperAPI = shipperlogic.GetAll().Select(s => new ShipperDto
+            try
+            {
+                var shippers = shipperlogic.GetAll().Select(s => new ShipperDto
                 {
                     ShipperID = s.ShipperID,
                     CompanyName = s.CompanyName,
                     Phone = s.Phone,
                 }).ToList();
-                return shipperAPI;
+
+                return Ok(shippers);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest();
+            }
         }
 
         [HttpPost]
@@ -69,6 +78,7 @@ namespace LabNet2021.Tp8.API.Controllers
             }
             catch (Exception ex)
             {
+
                 return InternalServerError();
             }
         }

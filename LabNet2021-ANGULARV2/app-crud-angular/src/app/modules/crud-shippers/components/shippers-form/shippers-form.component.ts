@@ -1,12 +1,14 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, OnDestroy } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { ShipperDto } from '../../models/ShipperDto';
 import { DbConnectionService } from '../../services/db-connection.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { NgForm } from '@angular/forms';
 
 
 import { ToastrService } from 'ngx-toastr';
 import { pairwise, startWith } from 'rxjs/operators';
+import { Subscription } from 'rxjs';
 
 
 @Component({
@@ -14,7 +16,13 @@ import { pairwise, startWith } from 'rxjs/operators';
   templateUrl: './shippers-form.component.html',
   styleUrls: ['./shippers-form.component.css']
 })
-export class ShippersFormComponent implements OnInit {
+export class ShippersFormComponent implements OnInit, OnDestroy {
+
+  subscription: Subscription;
+  editMode = false;
+  editedItemIndex: number;
+  editedItem: ShipperDto;
+
 
   form!: FormGroup;
   form2!: FormGroup;
@@ -48,15 +56,25 @@ export class ShippersFormComponent implements OnInit {
   
   }
 
-  
-
-  constructor(private readonly fb: FormBuilder, 
-    private apiService: DbConnectionService, 
-    public router: Router, 
-    private toastr: ToastrService, 
-    private activatedRoute: ActivatedRoute ) { }
+  constructor(private readonly fb:    FormBuilder, 
+              private apiService:     DbConnectionService, 
+              public router:          Router, 
+              private toastr:         ToastrService, 
+              private activatedRoute: ActivatedRoute ) { }
 
   ngOnInit(): void {
+
+
+    // this.subscription = this.apiService.startedEditing
+    //     .subscribe(
+    //       (index: number) =>{
+    //         this.editedItemIndex = index;
+    //         this.editMode = true;
+    //         this.editedItem = this.apiService.selectedshipper(index);
+    //       }
+    //     );
+
+
 
     // this.activatedRoute.params
     // .subscribe( ({id}) => console.log(id))
@@ -128,8 +146,8 @@ export class ShippersFormComponent implements OnInit {
   this.form2.controls['companyName'].setValue(this.seleccionShipper.companyName)
   this.form2.controls['phone'].setValue(this.seleccionShipper.phone)
 
-  
   }
+
 
   // updateShipperDetails(){
   // this.shipperObj.companyName = this.form2.value.companyName;
@@ -175,7 +193,11 @@ export class ShippersFormComponent implements OnInit {
  error => {
    alert("Error")
  })
-}
+  }
+
+  ngOnDestroy(){
+    this.subscription.unsubscribe();
+  }
 
 
 

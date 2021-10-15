@@ -18,18 +18,17 @@ namespace LabNet2021.Tp7.MVC.Controllers
         
         public ActionResult Index()
         {
-            
-            List<Shipper> shippers = shippersLogic.GetAll();
+              List<Shipper> shippers = shippersLogic.GetAll();
 
 
-            List<ShipperView> shippersView = shippers.Select(s => new ShipperView
-            {
-                ShipperID = s.ShipperID,
-                CompanyName = s.CompanyName,
-                Phone = s.Phone
+              List<ShipperView> shippersView = shippers.Select(s => new ShipperView
+                {
+                    ShipperID = s.ShipperID,
+                    CompanyName = s.CompanyName,
+                    Phone = s.Phone
 
-            }).ToList();
-            return View(shippersView);
+               }).ToList();
+               return View(shippersView);            
         }        
         
         [HttpPost]
@@ -59,12 +58,9 @@ namespace LabNet2021.Tp7.MVC.Controllers
             
             Shipper shipperEntity =  new Shipper
             {
-
-                
                 CompanyName = shippersView.CompanyName,
                 Phone = shippersView.Phone,
-                ShipperID = shippersView.ShipperID
-                
+                ShipperID = shippersView.ShipperID                
             };
 
             if (!ModelState.IsValid)
@@ -79,10 +75,10 @@ namespace LabNet2021.Tp7.MVC.Controllers
                 try
                 {
                     shippersLogic.Update(shipperEntity);
+                    return RedirectToAction("Index");
                 }
                 catch (DbEntityValidationException e)
                 {
-
                     return View("Error");
                 }
             }

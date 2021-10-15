@@ -16,6 +16,7 @@ import { ToastrService } from 'ngx-toastr';
   templateUrl: './ListForm.component.html',
   styleUrls: ['./ListForm.component.css']
 })
+
 export class ListFormComponent implements OnInit {
 
   err = null;
@@ -26,22 +27,24 @@ export class ListFormComponent implements OnInit {
 
   mostrarAdd!: boolean;
   mostrarUpdate!: boolean;
+
   public listShippers: Array<ShipperDto> = [];
 
-  constructor(private httpclient: HttpClient, private apiService: DbConnectionService, private modalService: BsModalService, private fb: FormBuilder, private toastrService: ToastrService) { }
+  constructor(private httpclient:     HttpClient, 
+              private apiService:     DbConnectionService, 
+              private modalService:   BsModalService, 
+              private fb:             FormBuilder, 
+              private toastrService:  ToastrService) { }
 
   openModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template,{ backdrop: 'static', keyboard: false });
   }
-
 
   campoNotValid(campo: string){
     
     return this.formValue.controls[campo].errors 
         && this.formValue.controls[campo].touched;
   }
-
-  
 
   ngOnInit() {
 
@@ -107,8 +110,7 @@ export class ListFormComponent implements OnInit {
         this.err = err.message
         this.toastrService.error('Error al intentar eliminar el Shipper - ' + err.message)
       });
-    }
-    
+    }    
   }
 
   onEdit(shipper: any){
@@ -133,7 +135,8 @@ export class ListFormComponent implements OnInit {
 
     this.apiService.updateShipper(this.shipperObj, this.shipperObj.shipperID)
     .subscribe( res =>{
-      this.toastrService.success('Se actualizaron correctamente los datos')     
+      // this.toastrService.success('Se actualizaron correctamente los datos')
+      this.toastrService.success('Se actualizaron correctamente los datos')       
       this.obtenerShippers();     
 
     },

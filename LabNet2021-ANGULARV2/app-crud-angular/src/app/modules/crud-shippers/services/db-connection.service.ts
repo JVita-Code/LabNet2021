@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { environment } from 'src/environments/environment';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { ShipperDto } from '../models/ShipperDto';
 
 
@@ -16,6 +16,8 @@ export class DbConnectionService {
   // httpOptions = {
   // headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   // };
+
+  startedEditing = new Subject<number>();
 
   endpoint: string = 'shipper'
   url = environment.apiShippers + this.endpoint;
@@ -32,14 +34,6 @@ export class DbConnectionService {
     return this.http.get<ShipperDto>(this.url + `/${id}`);
   }
 
-  // public insertShipper(data: any){
-  
-  //    return this.http.post(this.url, data)
-  //    .pipe(map((res: any)=>{
-  //      return res;
-  //    }));
-  // } 
-
   public insertShipper(shipper: ShipperDto){
   
     return this.http.post(this.url, shipper)
@@ -52,14 +46,6 @@ export class DbConnectionService {
    
     return this.http.delete(this.url + "/" + id);
   }
-
-  // public updateShipper(data: any, id: number): Observable<any> {
-    
-  //   return this.http.put<any>(this.url + "/" + id, data)
-  //   .pipe(map((res:any)=> {
-  //     return res;
-  //   }))
-  // }
 
   public updateShipper(shipper: ShipperDto, id: number): Observable<ShipperDto> {
     

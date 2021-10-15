@@ -31,13 +31,13 @@
             <span class="form-text text-danger"
                   *ngIf="campoNotValid('phone')">
                   <br>
-              El Phone no puede tener menos de 10 números o tener más de 24 numeros.
+              El Phone no puede tener menos de 10 números.
             </span>
         </div>
         <br>
         <button type="submit" class="btn btn-primary" (click)="modalRef.hide()">Back</button>
         <button type="submit" *ngIf="mostrarAdd" class="btn btn-danger mx-1" (click)="insertShipperDetails()">Add</button>
-        <button type="submit" *ngIf="mostrarUpdate" class="btn btn-danger mx-1" (click)="updateShipperDetails()">Save</button>
+        <button type="submit" *ngIf="mostrarUpdate" class="btn btn-danger mx-1" (click)="updateShipperDetails()" [disabled]="formValue.pristine">Save</button>
         
     </form> 
       

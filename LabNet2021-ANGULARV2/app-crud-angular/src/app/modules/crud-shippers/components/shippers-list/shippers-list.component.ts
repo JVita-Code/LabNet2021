@@ -69,4 +69,8 @@ export class ShippersListComponent implements OnInit {
     error => console.log(error))
   }
 
+  onEditItem(index: number){
+    this.apiService.startedEditing.next(index);
+  }
+
 }

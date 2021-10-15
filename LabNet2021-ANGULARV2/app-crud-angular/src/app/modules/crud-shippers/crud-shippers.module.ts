@@ -15,12 +15,6 @@ import { ShipperDetailComponent } from './components/shipper-detail/shipper-deta
 import { ListFormComponent } from './components/ListForm/ListForm.component';
 
 
-
-
-
-
-
-
 @NgModule({
   declarations: [
     ShippersListComponent,
