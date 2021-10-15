@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { environment } from 'src/environments/environment';
-import { Observable, throwError } from 'rxjs';
+import { Observable } from 'rxjs';
 import { ShipperDto } from '../models/ShipperDto';
 
 
@@ -29,15 +29,23 @@ export class DbConnectionService {
 
   public getShipper(id: number): Observable<ShipperDto>{
 
-    return this.http.get<ShipperDto>(this.url + `/${id}`)
+    return this.http.get<ShipperDto>(this.url + `/${id}`);
   }
 
-  public insertShipper(data: any){
+  // public insertShipper(data: any){
   
-     return this.http.post(this.url, data)
-     .pipe(map((res: any)=>{
-       return res;
-     }));
+  //    return this.http.post(this.url, data)
+  //    .pipe(map((res: any)=>{
+  //      return res;
+  //    }));
+  // } 
+
+  public insertShipper(shipper: ShipperDto){
+  
+    return this.http.post(this.url, shipper)
+    .pipe(map((res: any)=>{
+      return res;
+    }));
   } 
 
   public deleteShipper(id: number): Observable<any> {    
@@ -45,12 +53,20 @@ export class DbConnectionService {
     return this.http.delete(this.url + "/" + id);
   }
 
-  public updateShipper(data: any, id: number): Observable<any> {
+  // public updateShipper(data: any, id: number): Observable<any> {
     
-    return this.http.put<any>(this.url + "/" + id, data)
+  //   return this.http.put<any>(this.url + "/" + id, data)
+  //   .pipe(map((res:any)=> {
+  //     return res;
+  //   }))
+  // }
+
+  public updateShipper(shipper: ShipperDto, id: number): Observable<ShipperDto> {
+    
+    return this.http.put<any>(this.url + "/" + id, shipper)
     .pipe(map((res:any)=> {
       return res;
-    }))
-}
+    }));
+  }
 
 }

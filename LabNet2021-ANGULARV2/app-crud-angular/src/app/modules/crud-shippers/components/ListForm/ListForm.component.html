@@ -27,7 +27,7 @@
         </div>
         <div class="form-group">
             <label class="col-form-label" placeholder="(000)-000-0000">Phone</label>
-            <input formControlName="phone" type="text" class="form-control" >
+            <input formControlName="phone" type="text" class="form-control" mask="(000) 000-0000">
             <span class="form-text text-danger"
                   *ngIf="campoNotValid('phone')">
                   <br>
@@ -56,7 +56,10 @@
   </thead>
   
     <tbody>
-      <tr *ngFor="let shipper of listShippers">
+
+      <h2 *ngIf="isLoading">Loading...</h2>
+      <tr *ngFor="let shipper of listShippers let i = index">
+        
         <th scope="row">{{shipper.shipperID}}</th>
         <td>{{shipper.companyName}}</td>
         <td>{{shipper.phone}}</td>
@@ -69,4 +72,3 @@
     </tbody>
 
 </table>
-

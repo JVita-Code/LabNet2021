@@ -18,12 +18,15 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class ListFormComponent implements OnInit {
 
+  err = null;
+  isLoading = false;
   modalRef: BsModalRef;
   formValue: FormGroup;
   shipperObj : ShipperDto = new ShipperDto;
 
   mostrarAdd!: boolean;
   mostrarUpdate!: boolean;
+  public listShippers: Array<ShipperDto> = [];
 
   constructor(private httpclient: HttpClient, private apiService: DbConnectionService, private modalService: BsModalService, private fb: FormBuilder, private toastrService: ToastrService) { }
 
@@ -31,13 +34,14 @@ export class ListFormComponent implements OnInit {
     this.modalRef = this.modalService.show(template,{ backdrop: 'static', keyboard: false });
   }
 
+
   campoNotValid(campo: string){
     
     return this.formValue.controls[campo].errors 
         && this.formValue.controls[campo].touched;
   }
 
-  public listShippers: Array<ShipperDto> = [];
+  
 
   ngOnInit() {
 
@@ -50,13 +54,20 @@ export class ListFormComponent implements OnInit {
   }
 
   obtenerShippers(){
-    this.apiService.getShippers().subscribe(res => {
+    
+    this.isLoading = true;
+    this.apiService.getShippers()
+    .subscribe(res => {
       
-      this.listShippers = res;
+      this.isLoading = false;
+      this.listShippers = res;     
 
     },
     err => {
-      this.toastrService.error('Error al obtener listado de Shippers' + err.error.errors)
+      
+      this.isLoading = false;
+      this.err = err.message
+      this.toastrService.error('Error al intentar obtener listado de Shippers - ' + err.message) 
     });
   }
 
@@ -79,19 +90,25 @@ export class ListFormComponent implements OnInit {
 
     },
     err => {
-      this.toastrService.error('Error al cargar el Shipper' + err.error.errors)
+      this.err = err.message
+      this.toastrService.error('Error al cargar el Shipper - ' + err.message)
     });
   }
 
   deleteShipper(shipper: any){
-    this.apiService.deleteShipper(shipper.shipperID)
-    .subscribe(res =>{
-      this.toastrService.success('Se eliminó correctamente el Shipper')
-      this.obtenerShippers();
-    },
-    err => {
-      this.toastrService.error('Error al intentar eliminar el Shipper' + err.error.errors)
-    });
+
+    if(window.confirm('¿Está seguro que desea eliminar el registro?')){
+      this.apiService.deleteShipper(shipper.shipperID)
+      .subscribe(res =>{
+        this.toastrService.success('Se eliminó correctamente el Shipper')
+        this.obtenerShippers();
+      },
+      err => {
+        this.err = err.message
+        this.toastrService.error('Error al intentar eliminar el Shipper - ' + err.message)
+      });
+    }
+    
   }
 
   onEdit(shipper: any){
@@ -121,7 +138,8 @@ export class ListFormComponent implements OnInit {
 
     },
     err =>{
-      this.toastrService.error('Error al intentar actualizar los datos' + err.error.errors)
+      this.err = err.message
+      this.toastrService.error('Error al intentar actualizar los datos - ' + err.message)
     });
   }
 
