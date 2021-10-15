@@ -2,6 +2,7 @@
 using LabNet2021.Tp4.EF.Logic;
 using LabNet2021.Tp8.API.Models;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
@@ -13,40 +14,45 @@ namespace LabNet2021.Tp8.API.Controllers
     [EnableCors(origins: "http://localhost:4200", headers: "*", methods: "*")]
     public class ShipperController : ApiController
     {
-        // GET: Shippers
-        
+        // GET: Shippers        
 
         ShipperLogic shipperlogic = new ShipperLogic();
 
         [HttpGet]
         public List<ShipperDto> GetShippers()
         {
-            List<ShipperDto> shipperAPI = shipperlogic.GetAll().Select(s => new ShipperDto
-            {
-                ShipperID = s.ShipperID,
-                CompanyName = s.CompanyName,
-                Phone = s.Phone,
-            }).ToList();
-            return shipperAPI;
-        }
 
+                List<ShipperDto> shipperAPI = shipperlogic.GetAll().Select(s => new ShipperDto
+                {
+                    ShipperID = s.ShipperID,
+                    CompanyName = s.CompanyName,
+                    Phone = s.Phone,
+                }).ToList();
+                return shipperAPI;
+        }
 
         [HttpPost]
         public IHttpActionResult Add(ShipperDto shipperAPI)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
-
-            Shipper shipper = new Shipper()
+            try
             {
-                ShipperID = shipperAPI.ShipperID,
-                CompanyName = shipperAPI.CompanyName,
-                Phone = shipperAPI.Phone,
-            };
-            shipperlogic.Add(shipper);
-            shipperAPI.ShipperID = shipper.ShipperID;
-            
-            return Created(new Uri(Request.RequestUri + "/" + shipper.ShipperID), shipperAPI);
+                Shipper shipper = new Shipper()
+                {
+                    ShipperID = shipperAPI.ShipperID,
+                    CompanyName = shipperAPI.CompanyName,
+                    Phone = shipperAPI.Phone,
+                };
+                shipperlogic.Add(shipper);
+                shipperAPI.ShipperID = shipper.ShipperID;
+
+                return Created(new Uri(Request.RequestUri + "/" + shipper.ShipperID), shipperAPI);
+            }
+            catch (Exception ex)
+            {
+                return InternalServerError();
+            }            
         }
 
         [HttpDelete]
@@ -57,34 +63,15 @@ namespace LabNet2021.Tp8.API.Controllers
                 shipperlogic.Delete(id);
                 return Ok("El shipper fue eliminado.");
             }
-            catch (Exception ex)
+            catch (NullReferenceException ex)
             {
                 return NotFound();
             }
+            catch (Exception ex)
+            {
+                return InternalServerError();
+            }
         }
-
-        //[HttpPut]
-        //public IHttpActionResult Update(ShipperDto shipperAPI)
-        //{
-            
-        //    try
-        //    {
-        //        Shipper shipper = new Shipper()
-        //        {
-        //            ShipperID = shipperAPI.ShipperID,
-        //            CompanyName = shipperAPI.CompanyName,
-        //            Phone = shipperAPI.Phone,
-        //        };
-        //        shipperlogic.Update(shipper);
-                
-        //        return Ok("El shipper fue modificado.");
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        return BadRequest("Error: verifique los datos.");
-        //    }
-        //}
-
 
         [HttpPut]
         public IHttpActionResult Update2(int id, ShipperDto updatedShipper)
@@ -109,8 +96,8 @@ namespace LabNet2021.Tp8.API.Controllers
             }
             catch (Exception ex)
             {
-                return BadRequest("Error: verifique los datos.");
-            }            
+                return BadRequest("Ha ocurrido un error");
+            }                      
         }
     }
 }
