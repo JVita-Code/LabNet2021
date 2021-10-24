@@ -1,6 +1,6 @@
 ﻿namespace LabNet2021.Tp1
 {
-    public class Taxi : TransportePublico, ITransportePublico
+    public class Taxi : TransportePublico, IFormaPago
     {
         public Taxi(int numeroPasajeros) : base(numeroPasajeros)
         {

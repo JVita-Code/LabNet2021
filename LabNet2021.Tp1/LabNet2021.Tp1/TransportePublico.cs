@@ -16,11 +16,10 @@
 
         public string Arrancar()
         {
-            return $"Este transporte arranca simplemente girando la llave";
+            return "Este transporte arranca simplemente girando la llave";
         }
         public abstract string Avanzar();
 
         public abstract string Detenerse();
-
-    }
+    }   
 }

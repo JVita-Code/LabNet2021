@@ -1,6 +1,6 @@
 ﻿namespace LabNet2021.Tp1
 {
-    public class Omnibus : TransportePublico, ITransportePublico    
+    public class Omnibus : TransportePublico, IFormaPago   
     {
         public Omnibus(int numeroPasajeros) : base(numeroPasajeros)
         {

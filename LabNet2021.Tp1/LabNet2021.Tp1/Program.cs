@@ -8,11 +8,13 @@ namespace LabNet2021.Tp1
         static void Main(string[] args)
         {
             var cantidad = 0;
-            var cantidadTaxi = 5;
+            const int CantidadDeTaxies = 5;
+            const int CantidadMaximaPorTaxi = 7;
+            const int CantidadMaximaPorOmnibus = 100;
             var nombreTransporte = "Taxi";
             var numero = 0;
 
-
+            #region
             //-------- Para chequear el correcto funcionamiento de los métodos, descomentar ----
 
             //Omnibus colectivoo = new Omnibus(40);
@@ -38,8 +40,7 @@ namespace LabNet2021.Tp1
             //Console.WriteLine(taxiTres);
             //Console.WriteLine(taxiCuatro);
 
-
-
+            #endregion
 
             List<TransportePublico> transportes = new List<TransportePublico>();
 
@@ -48,72 +49,62 @@ namespace LabNet2021.Tp1
             Console.WriteLine("Presione una tecla y luego ENTER para comenzar el programa");
             Console.ReadLine();
 
-
-
-            try
-            {
-
-                for (int i = 1; i < 11; i++)
+                try
                 {
-                    if (i <= 5)
+
+                    for (int i = 1; i < 11; i++)
                     {
-                        Console.WriteLine("Ingrese la cantidad de pasajeros para el Taxi " + i + ".");
-                        cantidad = int.Parse(Console.ReadLine());
-                        while ((cantidad < 0 || cantidad > 7))
+                        if (i <= CantidadDeTaxies)
                         {
-                            Console.WriteLine("Un taxi no puede tener menos de 0 pasajeros o más de 7 pasajeros");
-                            Console.WriteLine("Por favor, Ingrese una cantidad valida para el Taxi " + i + ".");
+                            Console.WriteLine("Ingrese la cantidad de pasajeros para el Taxi " + i + ".");
                             cantidad = int.Parse(Console.ReadLine());
+                            while (cantidad < 0 || cantidad > CantidadMaximaPorTaxi)
+                            {
+                                Console.WriteLine("Un taxi no puede tener menos de 0 pasajeros o más de 7 pasajeros");
+                                Console.WriteLine("Por favor, Ingrese una cantidad valida para el Taxi " + i + ".");
+                                cantidad = int.Parse(Console.ReadLine());
+                            }
+                            transportes.Add(new Taxi(cantidad));
                         }
-                        transportes.Add(new Taxi(cantidad));
+                        else
+                        {
+                            Console.WriteLine("Ingrese la cantidad de pasajeros para el Omnibus " + (i - CantidadDeTaxies) + ".");
+                            cantidad = int.Parse(Console.ReadLine());
+                            while ((cantidad < 0 || cantidad > CantidadMaximaPorOmnibus))
+                            {
+                                Console.WriteLine("Un Omnibus no puede tener menos de 0 pasajeros o más de 100 pasajeros parados");
+                                Console.WriteLine("Por favor, Ingrese una cantidad valida para el Omnibus " + (i - CantidadDeTaxies) + ".");
+                                cantidad = int.Parse(Console.ReadLine());
+                            }
+                            transportes.Add(new Omnibus(cantidad));
+                        }
                     }
-                    else
+
+                    Console.WriteLine("------------------------------------------------------------------");
+
+                    foreach (var transporte in transportes)
                     {
-                        Console.WriteLine("Ingrese la cantidad de pasajeros para el Omnibus " + (i - cantidadTaxi) + ".");
-                        cantidad = int.Parse(Console.ReadLine());
-                        while ((cantidad < 0 || cantidad > 100))
+                        numero = 1;
+                        if (transporte.GetType().Name == nombreTransporte)
                         {
-                            Console.WriteLine("Un Omnibus no puede tener menos de 0 pasajeros o más de 100 pasajeros parados");
-                            Console.WriteLine("Por favor, Ingrese una cantidad valida para el Omnibus " + (i - cantidadTaxi) + ".");
-                            cantidad = int.Parse(Console.ReadLine());
+                            Console.WriteLine("El Taxi " + (transportes.IndexOf(transporte) + numero) + " traslada actualmente a: " + transporte.Pasajeros + " pasajeros.");
+                            numero++;
                         }
-
-                        transportes.Add(new Omnibus(cantidad));
+                        else
+                        {
+                            Console.WriteLine("El Omnibus " + (transportes.IndexOf(transporte) - 4) + " traslada actualmente a: " + transporte.Pasajeros + " pasajeros.");
+                            numero++;
+                        }
                     }
-
-
                 }
-
-                Console.WriteLine("------------------------------------------------------------------");
-
-                foreach (var transporte in transportes)
+                catch (Exception ex)
                 {
-                    numero = 1;
-                    if (transporte.GetType().Name == nombreTransporte)
-                    {
-                        Console.WriteLine("El Taxi " + (transportes.IndexOf(transporte) + numero) + " traslada actualmente a: " + transporte.Pasajeros + " pasajeros.");
-                        numero++;
-
-                    }
-
-                    else
-                    {
-                        Console.WriteLine("El Omnibus " + (transportes.IndexOf(transporte) - 4) + " traslada actualmente a: " + transporte.Pasajeros + " pasajeros.");
-                        numero++;
-
-                    }
-
+                    Console.WriteLine("Ha ocurrido un error:" + " " + ex.Message);                    
                 }
-            }
-            catch
-            {
-                Console.WriteLine($"Ha ocurrido un error inesperado, se han ingresado una o más letras cuando se pedía números.");
-                Console.WriteLine("El programa se cerrará, intente nuevamente.");
-            }
-            finally { Console.WriteLine("Programa finalizado"); }
-
-            ////Console.WriteLine("Hasta aquí llega la ejecución del programa.");
-            Console.ReadLine();           
-        }
+                finally { Console.WriteLine("Programa finalizado"); }
+                Console.ReadLine();            
+        }            
     }
 }
+
+
