@@ -12,6 +12,6 @@ namespace LabNet2021.Tp2
         public static void ThrowCustomException()
         {
             throw new CustomException();
-        }
+        }        
     }
 }
