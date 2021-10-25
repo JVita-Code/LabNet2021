@@ -1,12 +1,11 @@
--- VITALE JUAN -- Contacto: juanvitan@gmail.com
+ VITALE JUAN | Contacto: juanvitan@gmail.com
 
--- LabNet 2021 -- 
+LabNet 2021 | NET + Angular BOOTCAMP | Septiembre-Octubre  2021
 
-.NET + Angular BOOTCAMP | Septiembre-Octubre
 
-*Duración: 5 Semanas
+Duración: 5 Semanas
 
-*Temas desarrollados:
+Temas desarrollados:
 
 - Git & GitHub
 - POO
