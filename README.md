@@ -1,5 +1,3 @@
- VITALE JUAN | Contacto: juanvitan@gmail.com
-
 LabNet 2021 | NET + Angular BOOTCAMP | Septiembre-Octubre  2021
 
 
