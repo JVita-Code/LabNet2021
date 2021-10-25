@@ -14,9 +14,9 @@ namespace LabNet2021.Tp4.EF.Logic
         {
             context.Shippers.Add(field);
             context.SaveChanges();
-        }
+        }     
 
-        public static void SetShipperDetails(string companyName, string companyPhone)
+        public void SetShipperDetails(string companyName, string companyPhone)
         {
             ShipperLogic shipperLogic = new ShipperLogic();
 

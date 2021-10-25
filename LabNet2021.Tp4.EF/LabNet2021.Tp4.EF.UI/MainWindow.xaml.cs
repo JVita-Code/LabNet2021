@@ -37,9 +37,14 @@ namespace LabNet2021.Tp4.EF.UI
 
             try
             {
-                string companyName = txtShipperName.Text;
-                string companyPhone = txtPhone.Text;
-                ShipperLogic.SetShipperDetails(companyName, companyPhone);
+                //string companyName = txtShipperName.Text;
+                //string companyPhone = txtPhone.Text;
+                //ShipperLogic.SetShipperDetails(companyName, companyPhone);
+                shippersLogic.Add(new Shipper
+                {
+                    CompanyName = txtShipperName.Text,
+                    Phone = txtPhone.Text
+                });
             }
             catch (FormatException ex)
             {
