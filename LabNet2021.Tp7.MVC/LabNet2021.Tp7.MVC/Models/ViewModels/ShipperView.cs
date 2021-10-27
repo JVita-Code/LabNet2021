@@ -8,7 +8,7 @@ namespace LabNet2021.Tp7.MVC.Models
 {
     public class ShipperView
     {
-        [Required(ErrorMessage = "Para insertar shipper, coloque 0.")]
+        //[Required(ErrorMessage = "Para insertar shipper, coloque 0.")]
         public int ShipperID { get; set; }
 
         [ShipperFormCustomValidation]        

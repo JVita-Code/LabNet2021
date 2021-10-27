@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity.Validation;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 
@@ -45,44 +46,54 @@ namespace LabNet2021.Tp7.MVC.Controllers
             }   
         }
 
-        [HttpGet]
-        public ActionResult InsertUpdate()
+        public ActionResult InsertUpdate(int? id)
         {
-            return View();
+            ShipperView shipper = new ShipperView();
+
+            if(id != null)
+            {
+                var shipperToUpdate = shippersLogic.GetShipper(id);
+                shipper.CompanyName = shipperToUpdate.CompanyName;
+                shipper.Phone = shipperToUpdate.Phone;
+                shipper.ShipperID = shipperToUpdate.ShipperID;
+            }            
+            return View(shipper);
         }
 
         [HttpPost]
-        public ActionResult InsertUpdate(ShipperView shippersView)
+        public ActionResult InsertUpdate(ShipperView shipper)
         {
-            ShipperLogic shippersLogic = new ShipperLogic();
             
-            Shipper shipperEntity =  new Shipper
+            try
             {
-                CompanyName = shippersView.CompanyName,
-                Phone = shippersView.Phone,
-                ShipperID = shippersView.ShipperID                
-            };
+                if (!ModelState.IsValid)
+                {
+                    return View(shipper);
+                }
 
-            if (!ModelState.IsValid)
-            {
-                return View(shippersView);
-            }
+                Shipper shipperEntity = new Shipper()
+                {
+                    ShipperID = shipper.ShipperID,
+                    CompanyName = shipper.CompanyName,
+                    Phone = shipper.Phone
+                };
 
-            if (shipperEntity.ShipperID == 0)
-                shippersLogic.Add(shipperEntity);
-            else
-            {
-                try
+                if (shipperEntity.ShipperID == 0)
+                {
+                    shippersLogic.Add(shipperEntity);
+                    return RedirectToAction("Index");
+                }
+                else
                 {
                     shippersLogic.Update(shipperEntity);
                     return RedirectToAction("Index");
-                }
-                catch (DbEntityValidationException e)
-                {
-                    return View("Error");
-                }
+                }                
             }
-            return RedirectToAction("Index");
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+
         }
     }
 }

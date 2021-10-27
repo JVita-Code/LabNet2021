@@ -21,8 +21,7 @@ namespace LabNet2021.Tp4.EF.Logic
             catch (Exception ex)
             {
                 throw ex;
-            }
-            
+            }            
         }
 
         public static void SetShipperDetails(string companyName, string companyPhone)
@@ -47,8 +46,7 @@ namespace LabNet2021.Tp4.EF.Logic
             catch (Exception ex)
             {
                 throw ex;
-            }
-            
+            }            
         }
 
         public List<Shipper> GetAll()
@@ -56,49 +54,35 @@ namespace LabNet2021.Tp4.EF.Logic
             return context.Shippers.ToList();
         }
 
-        public Shipper GetShipper(int id)
+        public Shipper GetShipper(int? id)
         {
             try
             {
-
                 var shipper = context.Shippers.Where(s => s.ShipperID == id).FirstOrDefault();
                 return shipper;
             }
             catch (Exception ex)
             {
-
-                throw ex;
+              throw ex;
             }            
         }
 
-        public void Update(Shipper field)
+        public void Update(Shipper shipperUpdated)
         {
-            
-            var shipperUpdate = context.Shippers.Find(field.ShipperID);
-
-            if (shipperUpdate != null)
+            try
             {
-                try
+                var shipperToUpdate = context.Shippers.Find(shipperUpdated.ShipperID);                
                 {
+                    shipperToUpdate.CompanyName = shipperUpdated.CompanyName;
+                    shipperToUpdate.Phone = shipperUpdated.Phone;
 
-                    {
-                        shipperUpdate.CompanyName = field.CompanyName;
-                        shipperUpdate.Phone = field.Phone;
-
-                        context.SaveChanges();
-                    }
-                }
-                catch (Exception e)
-                {
-                    throw e;                     
+                    context.SaveChanges();
                 }
             }
-            else
+            catch (Exception ex)
             {
-                context.Shippers.Add(field);
-                context.SaveChanges();
+                throw ex;
             }
-
         }
 
         public void Update2(int id, Shipper updatedShipper)
@@ -115,13 +99,10 @@ namespace LabNet2021.Tp4.EF.Logic
                     context.SaveChanges();
                 }
             }
-
             catch (Exception e)
             {
                 throw e;
-            }
-
-            
+            }            
         }
     }
 }

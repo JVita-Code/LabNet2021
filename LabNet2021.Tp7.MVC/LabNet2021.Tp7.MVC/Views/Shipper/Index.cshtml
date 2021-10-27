@@ -1,25 +1,24 @@
 ﻿@model List<LabNet2021.Tp7.MVC.Models.ShipperView>
 
 @{
-    ViewBag.Tittle = "Shipper Page";
+    ViewBag.Tittle = "Shipper List Page";
 }
 
     <h1>@ViewBag.Tittle</h1>
 
 
-<div>
-    <a href="~/Shipper/InsertUpdate" class="btn btn-success" id="btnInsert">Insert</a>
-    <br /><br />
-</div>
+    <div>
+        @Html.ActionLink("Insert Shipper", "InsertUpdate", "", new { @class = "btn btn-success"})
+        <br /><br />
+    </div>
 
 <table id="shippers" class="table table-bordered">
-    <thead class="bg-primary">
+    <thead class="bg-info">
         <tr>
             <th scope="col">Shipper ID</th>
             <th scope="col">Company Name</th>
             <th scope="col">Phone</th>
-            <th scope="col">Update</th>
-            <th scope="col">Delete</th>
+            <th scope="col">Action</th>            
         </tr>
     </thead>
 
@@ -30,13 +29,15 @@
         <tr>
             <td>@shipper.ShipperID</td>
             <td>@shipper.CompanyName</td>
-            <td>@shipper.Phone</td>                       
+            <td>@shipper.Phone</td>
             <td>
-                <input onclick="document.location.href='@Url.Content("~/Shipper/InsertUpdate/" + @shipper.ShipperID)'" class="btn btn-sm" type="button" value="Actualizar" />
+                @*<input onclick="document.location.href='@Url.Content("~/Shipper/InsertUpdate/" + @shipper.ShipperID)'" class="btn btn-sm" type="button" value="Actualizar" />*@
+
+                @Html.ActionLink("Update", "InsertUpdate", new { id = shipper.ShipperID }, new { @class = "btn btn-info" })
+                <input onclick="jsDelete(@shipper.ShipperID);" class="btn btn-danger" type="button" value="Delete" />
+
             </td>
-            <td>
-                <input onclick="jsDelete(@shipper.ShipperID);" class="btn btn-danger" type="button" value="Delete"/>
-            </td>
+
         </tr>
         }        
 
