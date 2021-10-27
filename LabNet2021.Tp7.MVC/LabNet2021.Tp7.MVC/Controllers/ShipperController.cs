@@ -21,7 +21,6 @@ namespace LabNet2021.Tp7.MVC.Controllers
         {
               List<Shipper> shippers = shippersLogic.GetAll();
 
-
               List<ShipperView> shippersView = shippers.Select(s => new ShipperView
                 {
                     ShipperID = s.ShipperID,
@@ -93,7 +92,6 @@ namespace LabNet2021.Tp7.MVC.Controllers
             {
                 throw new Exception(ex.Message);
             }
-
         }
     }
 }
