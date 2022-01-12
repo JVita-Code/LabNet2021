@@ -9,7 +9,7 @@ namespace LabNet2021.Tp1
         {           
             var listaTransporte = new List<TransportePublico>();
 
-            MensajesAlUsuario.PresentarAplicacion();           
+            MensajesAlUsuarioPorConsola.PresentarAplicacion();           
 
             try
             {

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LabNet2021.Tp1
 {
-    public class MensajesAlUsuario
+    public class MensajesAlUsuarioPorConsola
     {
         public static void PresentarAplicacion()
         {

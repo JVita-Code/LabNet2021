@@ -16,7 +16,7 @@ namespace LabNet2021.Tp1
             var listaPasajeros = CargarPasajerosTaxi(listaTransporte);
             var listaCargada = CargarPasajerosOmnibus(listaPasajeros);
             return listaCargada;
-        }
+        }       
 
         public static List<TransportePublico> CargarPasajerosTaxi(List<TransportePublico> listaTransporte)
         {            
