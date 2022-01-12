@@ -2,6 +2,6 @@
 {
     public interface IFormaPago
     {
-    string PagoDeCliente();
+        string PagoDeCliente();
     }
 }

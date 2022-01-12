@@ -43,7 +43,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CargaDePasajeros.cs" />
     <Compile Include="Interface\IFormaPago.cs" />
+    <Compile Include="MensajesAlUsuario.cs" />
     <Compile Include="Omnibus.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
