@@ -8,8 +8,8 @@ namespace LabNet2021.Tp1
 {
     public class CargaDePasajeros
     {
-        private const int CantidadDeTaxis = 5;
-        private const int CantidadDeOmnibus = 5;
+        private const int CantidadMaximaDeTaxis = 5;
+        private const int CantidadMaximaDeOmnibus = 5;
 
         public static List<TransportePublico> Cargar(List<TransportePublico> listaTransporte)
         {
@@ -24,7 +24,7 @@ namespace LabNet2021.Tp1
             var cantidad = 0;
             var cantidadMaximaParaTaxi = 7;
 
-            while (contador <= CantidadDeTaxis)
+            while (contador <= CantidadMaximaDeTaxis)
             {
                 Console.WriteLine("Ingrese la cantidad de pasajeros para el Taxi " + contador + ".");
 
@@ -50,7 +50,7 @@ namespace LabNet2021.Tp1
             var cantidad = 0;
             var cantidadMaximaParaOmnibus = 100;
 
-            while (contador <= CantidadDeOmnibus)
+            while (contador <= CantidadMaximaDeOmnibus)
             {
                 Console.WriteLine("Ingrese la cantidad de pasajeros para el Omnibus " + contador + ".");
 
@@ -63,7 +63,7 @@ namespace LabNet2021.Tp1
                     cantidad = int.Parse(Console.ReadLine());
                 }
 
-                listaTransporte.Add(new Taxi(cantidad));
+                listaTransporte.Add(new Omnibus(cantidad));
                 contador++;
             }
             return listaTransporte;
@@ -71,22 +71,33 @@ namespace LabNet2021.Tp1
 
         public static void InformaCantidad(List<TransportePublico> listaTransporte)
         {
-            
-            foreach (var transporte in listaTransporte)
-            {
-                var numero = 1;               
 
-                if(transporte.GetType() == typeof(Taxi))
-                {
-                    Console.WriteLine("El Taxi " + (listaTransporte.IndexOf(transporte) + numero) + " traslada actualmente a: " + transporte.Pasajeros + " pasajeros.");
-                    numero++;
-                }
-                else
-                {
-                    Console.WriteLine("El Omnibus " + (listaTransporte.IndexOf(transporte) - 4) + " traslada actualmente a: " + transporte.Pasajeros + " pasajeros.");
-                    numero++;
-                }
+            //foreach (var transporte in listaTransporte)
+            //{
+            //    var numero = 1;               
+
+            //if (transporte.GetType() == typeof(Taxi))
+            //{
+            //    numero++;
+            //    Console.WriteLine("El Taxi " + listaTransporte.IndexOf(transporte) + numero) + " traslada actualmente a: " + transporte.Pasajeros + " pasajeros.");
+            //}
+            //else
+            //{
+            //    Console.WriteLine("El Omnibus " + (listaTransporte.IndexOf(transporte) - numero) + " traslada actualmente a: " + transporte.Pasajeros + " pasajeros.");
+            //}
+            //}
+
+            //foreach (TransportePublico transporte in listaTransporte)
+            //{
+
+            //    Console.WriteLine($"El {transporte.GetType().Name} {listaTransporte.IndexOf(transporte)} tiene {transporte.Pasajeros} pasajeros");                
+            //}
+
+            for (int i = 1; i < listaTransporte.Count; i++)
+            {
+                Console.WriteLine($"El {listaTransporte[i].GetType().Name} {i} traslada actualmente a {listaTransporte[i].Pasajeros}");
             }
+
         }
     }
 }
