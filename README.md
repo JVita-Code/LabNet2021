@@ -17,3 +17,5 @@ Temas desarrollados:
 - Angular
 - Introducción a Agile
 
+Update: Aplicando SOLID desde Enero 2022
+
