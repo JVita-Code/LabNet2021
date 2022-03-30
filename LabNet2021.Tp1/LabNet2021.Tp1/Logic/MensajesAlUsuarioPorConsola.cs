@@ -16,6 +16,13 @@ namespace LabNet2021.Tp1
             Console.ReadLine();
         }
 
+        public static void AplicacionFinalizada()
+        {
+            Console.WriteLine("Programa finalizado");
 
+            Console.WriteLine("Presione una tecla para cerrar la aplicación");
+
+            Console.ReadLine();
+        }
     }
 }

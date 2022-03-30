@@ -6,16 +6,19 @@ namespace LabNet2021.Tp1
     class Program
     {
         static void Main(string[] args)
-        {           
-            var listaTransporte = new List<TransportePublico>();
+        {       
+            
+            // La idea es que esta clase sólo se encargue del control del flujo de la applicación. 
 
             MensajesAlUsuarioPorConsola.PresentarAplicacion();           
 
             try
             {
-                var listaPasajeros = CargaDePasajeros.Cargar(listaTransporte);
+                var listaTransporte = CargaDePasajeros.CrearListaTransportePublico();
 
-                CargaDePasajeros.InformaCantidad(listaPasajeros);
+                CargaDePasajeros.CargarPasajeros(listaTransporte);
+
+                CargaDePasajeros.InformaCantidad(listaTransporte);
             }
             catch (Exception ex)
             {
@@ -23,9 +26,8 @@ namespace LabNet2021.Tp1
             }
             finally
             {
-                Console.WriteLine("Programa finalizado");
-            }
-            Console.ReadLine();
+                MensajesAlUsuarioPorConsola.AplicacionFinalizada();
+            }            
         }
     }
 } 
