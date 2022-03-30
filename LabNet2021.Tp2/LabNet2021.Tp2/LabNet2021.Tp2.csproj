@@ -48,6 +48,7 @@
     <Compile Include="EjercicioExepciones2.cs" />
     <Compile Include="Extensions\DoubleExtensions.cs" />
     <Compile Include="Logic.cs" />
+    <Compile Include="MensajesDeError.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

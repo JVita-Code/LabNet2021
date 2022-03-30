@@ -7,7 +7,7 @@ namespace LabNet2021.Tp2
     {
         private int numerador;
         private int denominador;
-        private int resultado;
+        //private int resultado;
 
         public Divisiones(int numerador)
         {

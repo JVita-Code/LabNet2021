@@ -6,37 +6,48 @@ namespace LabNet2021.Tp2
 {
     class Program
     {
-
         static void Main(string[] args)
         {
-            var seleccion = 0;
-
             Console.WriteLine("Ingrese un número del 1 al 5 para elegir el ejercicio a seleccionar");
-            seleccion = int.Parse(Console.ReadLine());
+
+            var seleccion = Logic.ValidarFormato(Console.ReadLine());
+
             switch (seleccion)
             {
                 case 1:
                     Console.WriteLine("A continuación se realizará una division por 0");
                     Console.WriteLine("Ingrese un Numerador");
+                    
                     try
                     {
-                        Divisiones.Division(int.Parse(Console.ReadLine()));
+                        //No se utiliza TryParse por pedido del ejercicio...
+
+                        Divisiones.Division(int.Parse(Console.ReadLine()));                        
                     }
                     catch (DivideByZeroException ex)
                     {
-                        Console.WriteLine($"Se ha capturado la excepción de tipo'{ex.GetType()}'");
-                        Console.WriteLine($"Error info: {ex.Message}");
-                        Console.WriteLine("No se puede dividir por cero.");
+                        var listaMensajesError = MensajesDeError.ErrorDivisionPorCero(ex);
 
+                        foreach (var mensaje in listaMensajesError)
+                        {
+                            Console.WriteLine(mensaje);
+                            Console.WriteLine("");
+                        }                           
                     }
                     catch (Exception ex)
                     {
-                        Console.WriteLine($"Se capturó una excepcion generica de tipo '{ex.GetType()}'");
-                        Console.WriteLine($"Error info: {ex.Message}");
+                        var listaMensajesErrorGenericos = MensajesDeError.ErrorExcepcionGenerica(ex);
+
+                        foreach (var mensaje in listaMensajesErrorGenericos)
+                        {
+                            Console.WriteLine(mensaje);
+                            Console.WriteLine("");
+                        }
                     }
                     finally
                     {
                         Console.WriteLine("El método para dividir por 0 ha finalizado");
+                        Console.ReadLine();
                     }                                        
                     break;
 
@@ -46,21 +57,32 @@ namespace LabNet2021.Tp2
                     {
                         Console.WriteLine("Ingrese numerador");
                         int numeradorTEST = Convert.ToInt32(Console.ReadLine());
+
                         Console.WriteLine("A continuacion, ingrese denominador");
                         int denominadorTEST = Convert.ToInt32(Console.ReadLine());
+
                         var resultado = Divisiones.Division(numeradorTEST, denominadorTEST);
                         Console.WriteLine($"El resultado de la division es {resultado}");
                     }
                     catch (FormatException ex)
                     {
-                        Console.WriteLine($"Seguro ingresó letras o no ingresó nada! : {ex.GetType()}");
-                        Console.WriteLine($"Error info: {ex.Message}");
+                        var listaErrorFormato = MensajesDeError.ErrorFormato(ex);
+
+                        foreach (var mensaje in listaErrorFormato)
+                        {
+                            Console.WriteLine(mensaje);
+                            Console.WriteLine("");
+                        }
                     }
                     catch (DivideByZeroException ex)
                     {
-                        Console.WriteLine($"Se ha capturado la excepción de tipo'{ex.GetType()}'");
-                        Console.WriteLine($"Error info: {ex.Message}");
-                        Console.WriteLine($"Ni Messi puede dividir por cero");
+                        var listaMensajesError = MensajesDeError.ErrorDivisionPorCero(ex);
+
+                        foreach (var mensaje in listaMensajesError)
+                        {
+                            Console.WriteLine(mensaje);
+                            Console.WriteLine("");
+                        }
                     }
                     finally
                     {
@@ -76,24 +98,35 @@ namespace LabNet2021.Tp2
                         double resultadoExtendido = 0;
                         Console.WriteLine("Ingrese el numerador");
                         double numPreciso = double.Parse(Console.ReadLine());
+
                         Console.WriteLine("Ingrese el denominador");
                         double denomPreciso = double.Parse(Console.ReadLine());
+
                         Console.WriteLine("El resultado de la division es: " + resultadoExtendido.DivisionPrecisa(numPreciso, denomPreciso));
                     }
                     catch (DivideByZeroException ex)
                     {
-                        Console.WriteLine("No se puede dividir por cero.");
-                        Console.WriteLine($"Se ha capturado la excepción '{ex.GetType()}'");
-                        Console.WriteLine($"{ex.Message}");
+                        var listaMensajesError = MensajesDeError.ErrorDivisionPorCero(ex);
+
+                        foreach (var mensaje in listaMensajesError)
+                        {
+                            Console.WriteLine(mensaje);
+                            Console.WriteLine("");
+                        }
                     }
                     catch (FormatException ex)
                     {
-                        Console.WriteLine($"Usted ingresó una letra o no ingresó nada");
-                        Console.WriteLine($"Error info: {ex.Message}");
+                        var listaErrorFormato = MensajesDeError.ErrorFormato(ex);
+
+                        foreach (var mensaje in listaErrorFormato)
+                        {
+                            Console.WriteLine(mensaje);
+                            Console.WriteLine("");
+                        }
                     }
                     finally
                     {
-                        Console.WriteLine("El método extendido ha finalizado");
+                        Console.WriteLine("El método extendido ha finalizado");                        
                     }
                     Console.ReadLine();
                     break;
@@ -104,10 +137,15 @@ namespace LabNet2021.Tp2
                     {
                         Logic.LanzarMetodo();
                     }
-                    catch (Exception ex3)
+                    catch (Exception ex)
                     {
-                        Console.WriteLine($"Error info: {ex3.Message}");
-                        Console.WriteLine($"Se ha producido una excepcion de tipo: {ex3.GetType()}");
+                        var listaMensajesErrorGenericos = MensajesDeError.ErrorExcepcionGenerica(ex);
+
+                        foreach (var mensaje in listaMensajesErrorGenericos)
+                        {
+                            Console.WriteLine(mensaje);
+                            Console.WriteLine("");
+                        }
                     }
                     Console.ReadLine();
                     break;
@@ -116,18 +154,26 @@ namespace LabNet2021.Tp2
                     Console.WriteLine("Ejercicio 4: Llamando a la excepcion personalizada...");
                     try
                     {
-                        Logic.ThrowCustomException();
+                        Logic.LanzarCustomException();
                     }
-                    catch (CustomException ex5)
+                    catch (CustomException ex)
                     {
-                        Console.WriteLine($"Se capturó la excepcion: {ex5.GetType()}");
-                        MessageBox.Show(ex5.Message, "Excepcion personalizada");
+                        Console.WriteLine($"Se capturó la excepcion: {ex.GetType()}");                        
+
+                        MessageBox.Show(ex.Message, "Error");
                     }
-                    Console.WriteLine("El programa ha finalizado");
+                    finally
+                    {
+                        Console.WriteLine("El lanzamiento de la excepcion ha finalizado");                                              
+                    }
                     Console.ReadLine();
                     break;
+
+
+
                 default:
                     Console.WriteLine("Número incorrecto, ingrese nuevamente (1-5).");
+
                     seleccion = int.Parse(Console.ReadLine());
                     break;
             }            
