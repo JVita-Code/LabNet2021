@@ -5,11 +5,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{AE55932E-AE3E-4424-A7FD-73B014C8290B}</ProjectGuid>
+    <ProjectGuid>{F0E0F387-E54B-4867-9135-5F00D1D60B0F}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>LabNet2021.Tp4.EF.Logic</RootNamespace>
-    <AssemblyName>LabNet2021.Tp4.EF.Logic</AssemblyName>
+    <RootNamespace>LabNet2021.Tp4.Services</RootNamespace>
+    <AssemblyName>LabNet2021.Tp4.Services</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -43,7 +43,6 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -52,32 +51,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CustomersLogic.cs" />
-    <Compile Include="General\IRepository.cs" />
-    <Compile Include="Shipper\IShipperRepository.cs" />
-    <Compile Include="General\IUnitOfWork.cs" />
+    <Compile Include="ShipperService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="General\Repository.cs" />
-    <Compile Include="Shipper\ShipperRepository.cs" />
-    <Compile Include="General\UnitOfWork.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\LabNet2021.Tp4.EF.Data\LabNet2021.Tp4.EF.Data.csproj">
-      <Project>{13E9EED6-61AA-4259-B47B-B14BDDAEB55A}</Project>
-      <Name>LabNet2021.Tp4.EF.Data</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\LabNet2021.Tp4.EF.Entities\LabNet2021.Tp4.EF.Entities.csproj">
-      <Project>{8b77f097-5200-497d-bf84-1c18ab3e733d}</Project>
-      <Name>LabNet2021.Tp4.EF.Entities</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\LabNet2021.Tp4.Services\LabNet2021.Tp4.Services.csproj">
-      <Project>{F0E0F387-E54B-4867-9135-5F00D1D60B0F}</Project>
-      <Name>LabNet2021.Tp4.Services</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31424.327
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32228.430
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LabNet2021.Tp4.EF.UI", "LabNet2021.Tp4.EF.UI\LabNet2021.Tp4.EF.UI.csproj", "{1B797215-BC0F-4714-B697-52A2C5FE9DC9}"
 EndProject
@@ -10,6 +10,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LabNet2021.Tp4.EF.Data", "LabNet2021.Tp4.EF.Data\LabNet2021.Tp4.EF.Data.csproj", "{13E9EED6-61AA-4259-B47B-B14BDDAEB55A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LabNet2021.Tp4.EF.Entities", "LabNet2021.Tp4.EF.Entities\LabNet2021.Tp4.EF.Entities.csproj", "{8B77F097-5200-497D-BF84-1C18AB3E733D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LabNet2021.Tp4.Services", "LabNet2021.Tp4.Services\LabNet2021.Tp4.Services.csproj", "{F0E0F387-E54B-4867-9135-5F00D1D60B0F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{8B77F097-5200-497D-BF84-1C18AB3E733D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8B77F097-5200-497D-BF84-1C18AB3E733D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8B77F097-5200-497D-BF84-1C18AB3E733D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F0E0F387-E54B-4867-9135-5F00D1D60B0F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F0E0F387-E54B-4867-9135-5F00D1D60B0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F0E0F387-E54B-4867-9135-5F00D1D60B0F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F0E0F387-E54B-4867-9135-5F00D1D60B0F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

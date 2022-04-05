@@ -20,7 +20,7 @@ namespace LabNet2021.Tp4.EF.UI
 
         private void btnGetAllShippers(object sender, RoutedEventArgs e)
         {
-            ShipperLogic shippersLogic = new ShipperLogic();
+            ShipperRepository shippersLogic = new ShipperRepository();
 
             ShippersList.ItemsSource = shippersLogic.GetAll();
         }
@@ -33,14 +33,14 @@ namespace LabNet2021.Tp4.EF.UI
 
         private void btnSetShipper(object sender, RoutedEventArgs e)
         {
-            ShipperLogic shippersLogic = new ShipperLogic();
+            ShipperRepository shippersLogic = new ShipperRepository();
 
             try
             {
                 //string companyName = txtShipperName.Text;
                 //string companyPhone = txtPhone.Text;
                 //ShipperLogic.SetShipperDetails(companyName, companyPhone);
-                shippersLogic.Add(new Shipper
+                shippersLogic.AddItem(new Shipper
                 {
                     CompanyName = txtShipperName.Text,
                     Phone = txtPhone.Text
@@ -65,11 +65,11 @@ namespace LabNet2021.Tp4.EF.UI
 
         private void btnDeleteShipper(object sender, RoutedEventArgs e)
         {
-            ShipperLogic shipperslogic = new ShipperLogic();
+            ShipperRepository shipperslogic = new ShipperRepository();
             try
             {
                 int ID = int.Parse(txtShipperID.Text);
-                shipperslogic.Delete(ID);
+                shipperslogic.DeleteItem(ID);
                 MessageBox.Show("Shipped deleted!");
 
             }
@@ -98,11 +98,11 @@ namespace LabNet2021.Tp4.EF.UI
         private void btnUpdateShipper(object sender, RoutedEventArgs e)
         {
 
-            ShipperLogic shippersLogic = new ShipperLogic();
+            ShipperRepository shippersLogic = new ShipperRepository();
             try
             {
                 
-                shippersLogic.Update(new Shipper
+                shippersLogic.UpdateItem(new Shipper
                 {
                     CompanyName = B.Text,
                     Phone = A.Text,                    
@@ -141,7 +141,7 @@ namespace LabNet2021.Tp4.EF.UI
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            ShipperLogic shippersLogic = new ShipperLogic();
+            ShipperRepository shippersLogic = new ShipperRepository();
             List<Shipper> shipper = shippersLogic.GetAll();
             cmdShippers.ItemsSource = shipper;
             cmdShippers.SelectedValuePath = "ShipperID";
@@ -150,7 +150,7 @@ namespace LabNet2021.Tp4.EF.UI
 
         private void ComboBox_DropDownOpened(object sender, EventArgs e)
         {
-            ShipperLogic shippersLogic = new ShipperLogic();
+            ShipperRepository shippersLogic = new ShipperRepository();
             cmdShippers.ItemsSource = shippersLogic.GetAll();
         }
 
